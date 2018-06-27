@@ -1,0 +1,30 @@
+﻿@page "{link}"
+@model InterrogateMe.Web.Pages.QuestionModel
+
+<h1>@Model.Title</h1>
+
+<div>
+    <form method="post">
+        <input type="hidden" asp-for="@Model.TempLink" value="@Model.ShortcutLink" />
+        <label>Enter your question:</label>
+        <input asp-for="@Model.Question.Content" type="text" />
+        <input type="submit" value="Ask" />
+        <input type="hidden" asp-for="Url" value="@Model.Url" />
+        <a asp-page="Result">Results</a>
+    </form>
+</div>
+
+<div>
+    <h1>Share this link:</h1>
+    <input id="shortcutUrl" readonly value="https://interrogate.me/@Model.ShortcutLink" />
+</div>
+
+
+@section Scripts{ 
+    <script>
+        $("#shortcutUrl").on("click", function () {
+            document.getElementById("shortcutUrl").select();
+            document.execCommand("copy");
+        });
+    </script>
+}

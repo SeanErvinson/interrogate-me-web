@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    string tooltipNsfw = "Allow user to ask profane/nsfw question/s.";
+    string tooltipIpDuplication = "Check if Ip has already asked. Prevents spam.";
+}
+
+<div>
+    <form method="post">
+        <input asp-for="@Model.Topic.Title" type="text" />
+        <input id="nsfw" asp-for="@Model.Topic.AllowNsfw" type="checkbox" />
+        <label asp-for="@Model.Topic.AllowNsfw" for="nsfw">Allow NSFW</label>
+        <div class="tooltiphold">
+            <img class="tooltiphold" src="~/images/Index/help.svg" />
+            <span class="tooltiptext">@tooltipNsfw</span>
+        </div>
+        <input id="ipDuplication" asp-for="@Model.Topic.PreventIpDuplication" type="checkbox" />
+        <label asp-for="@Model.Topic.PreventIpDuplication" for="ipDuplication">Prevent Ip Duplication</label>
+        <div class="tooltiphold">
+            <img class="tooltiphold" src="~/images/Index/help.svg" />
+            <span class="tooltiptext">@tooltipIpDuplication</span>
+        </div>
+        <input id="multipleVote" asp-for="@Model.Topic.AllowMultipleLikes" type="checkbox" />
+        <label asp-for="@Model.Topic.AllowMultipleLikes" for="multipleVote">Allow multiple votes</label>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+<div>
+    <label>Enter a link:</label>
+    <input id="shortcutLink" />
+    <a id="executeLink">Go to question</a>
+</div>
+
+
+@section Scripts
+{
+    <script>
+        $("#executeLink").on('click', function () {
+            var shortcutLink = $("#shortcutLink").val();
+            if (shortcutLink != null)
+                $("#executeLink").attr("href", "/" + shortcutLink.substring(shortcutLink.lastIndexOf("/") + 1, shortcutLink.length));
+        });
+    </script>
+}

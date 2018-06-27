@@ -1,0 +1,27 @@
+﻿@page "{link}"
+@model InterrogateMe.Web.Pages.ResultModel
+
+<h2>Result</h2>
+
+
+
+
+@section Scripts{
+
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/interrogatehub.js"></script>
+<script>
+    (function () {
+        var url = window.location.pathname;
+        url = url.substring(url.lastIndexOf("/") + 1, url.length);
+
+        var hub = new InterrogateHub();
+
+        hub.onNotifyList = (question) => {
+            console.log(question);
+        }
+        hub.start(url);
+    })();
+</script>
+
+}
