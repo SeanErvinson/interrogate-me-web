@@ -2,10 +2,8 @@
 using InterrogateMe.Core.Data.Specification;
 using InterrogateMe.Core.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace InterrogateMe.Data
 {
@@ -40,6 +38,14 @@ namespace InterrogateMe.Data
             return dataSet.SingleOrDefault(specification.Criteria);
         }
 
+
+        public T SingleInclude<T>(ISpecification<T> specification, IEnumerable<ISpecification<T>> includeSpecification) where T : BaseModel
+        {
+            var dataSet = _context.Set<T>();
+            var dataSetInclude = Include<T>(includeSpecification);
+            return dataSetInclude.SingleOrDefault(specification.Criteria);
+        }
+
         public T SingleInclude<T>(ISpecification<T> specification) where T : BaseModel
         {
             var dataSet = _context.Set<T>();
@@ -60,14 +66,17 @@ namespace InterrogateMe.Data
         }
 
 
-        public IList<T> Include<T>(ISpecification<T> specification) where T : BaseModel
+        private IQueryable<T> Include<T>(IEnumerable<ISpecification<T>> specifications) where T : BaseModel
         {
             var dataSet = _context.Set<T>();
 
             IQueryable<T> query = null;
-            query = dataSet.Include(specification.Criteria);
+            foreach (var specification in specifications)
+            {
+                query = dataSet.Include(specification.Definition);
+            }
 
-            return query.ToList();
+            return query ?? dataSet;
         }
     }
 }

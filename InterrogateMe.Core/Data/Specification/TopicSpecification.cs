@@ -12,7 +12,7 @@ namespace InterrogateMe.Core.Data.Specification
         {
         }
 
-        public static TopicSpecification AllQuestion()
+        public static TopicSpecification IncludeQuestions()
         {
             return new TopicSpecification(x => x.Questions);
         }

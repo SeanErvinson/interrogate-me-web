@@ -8,7 +8,7 @@ namespace InterrogateMe.Core.Data.Specification
 {
     public class LinkSpecification : BaseSpecification<Link>
     {
-        public LinkSpecification(Expression<Func<Link, object>> criteria) : base(criteria)
+        public LinkSpecification(Expression<Func<Link, bool>> criteria) : base(criteria)
         {
         }
 

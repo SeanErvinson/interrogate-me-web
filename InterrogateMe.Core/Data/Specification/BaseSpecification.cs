@@ -6,12 +6,20 @@ namespace InterrogateMe.Core.Data.Specification
 {
     public class BaseSpecification<T> : ISpecification<T> where T : BaseModel
     {
-        public Expression<Func<T, object>> Criteria { get; }
+        public Expression<Func<T, bool>> Criteria { get; }
+        public Expression<Func<T, object>> Definition { get; }
 
-        public BaseSpecification(Expression<Func<T, object>> criteria)
+
+        public BaseSpecification(Expression<Func<T, bool>> criteria)
         {
             Criteria = criteria;
         }
+
+        public BaseSpecification(Expression<Func<T, object>> definition)
+        {
+            Definition = definition;
+        }
+
 
         public static BaseSpecification<T> All()
         {

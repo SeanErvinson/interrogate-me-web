@@ -28,7 +28,7 @@ namespace InterrogateMe.Web.Pages
         public void OnGet(string link)
         {
             var resultLink = _repository.Single(LinkSpecification.ByUrl(link));
-            var resultTopic = _repository.Single(BaseSpecification<Topic>.ById(resultLink.TopicId));
+            var resultTopic = _repository.SingleInclude(BaseSpecification<Topic>.ById(resultLink.TopicId), new List<ISpecification<Topic>> { TopicSpecification.IncludeQuestions() });
             Questions = resultTopic.Questions;
         }
     }

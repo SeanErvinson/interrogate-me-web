@@ -9,7 +9,7 @@ namespace InterrogateMe.Core.Data
     {
         T Single<T>(ISpecification<T> specification) where T : BaseModel;
         IEnumerable<T> All<T>(ISpecification<T> specification) where T : BaseModel;
-        IList<T> Include<T>(ISpecification<T> specification) where T : BaseModel;
+        T SingleInclude<T>(ISpecification<T> specification, IEnumerable<ISpecification<T>> includeSpecification) where T : BaseModel;
         void Remove<T>(T removeItem) where T : BaseModel;
         void Add<T>(T addItem) where T : BaseModel;
         void Update<T>(T updateItem) where T : BaseModel;
