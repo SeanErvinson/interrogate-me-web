@@ -2,6 +2,7 @@
 using InterrogateMe.Core.Data.Specification;
 using InterrogateMe.Core.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
 namespace InterrogateMe.Web.Pages
@@ -11,6 +12,7 @@ namespace InterrogateMe.Web.Pages
         #region Private Variable
 
         private readonly IRepository _repository;
+        private readonly ILogger _logeger;
 
         #endregion
 
@@ -20,9 +22,10 @@ namespace InterrogateMe.Web.Pages
 
         #endregion
 
-        public ResultModel(IRepository repository)
+        public ResultModel(IRepository repository, ILogger<ResultModel> logger)
         {
             _repository = repository;
+            _logeger = logger;
         }
 
         public void OnGet(string link)

@@ -5,6 +5,7 @@ using InterrogateMe.Utilities;
 using InterrogateMe.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace InterrogateMe.Web.Pages
         #region Private Variable
 
         private readonly IRepository _repository;
+        private readonly ILogger _logger;
 
         #endregion Private Variable
 
@@ -36,9 +38,10 @@ namespace InterrogateMe.Web.Pages
         /// Candidate for refactoring. Implementing a IService or Service class in the middle
         /// that is triggered by an event
         /// </summary>
-        public QuestionModel(IRepository repository, InterrogateClient interrrogateClient)
+        public QuestionModel(IRepository repository, ILogger<QuestionModel> logger, InterrogateClient interrrogateClient)
         {
             _repository = repository;
+            _logger = logger;
             this.InterrogateClient = interrrogateClient;
         }
 
