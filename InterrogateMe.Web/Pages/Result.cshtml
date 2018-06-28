@@ -3,6 +3,16 @@
 
 <h2>Result</h2>
 
+<ul id="questionList">
+    @foreach(var question in Model.Questions)
+    {
+        <li>
+            <div>
+                <h1>@question.Content</h1>
+            </div>
+        </li>
+    }
+</ul>
 
 
 
@@ -18,7 +28,14 @@
         var hub = new InterrogateHub();
 
         hub.onNotifyList = (question) => {
-            console.log(question);
+            var content = question.content;
+            $("#questionList").append(
+                $('<li>').append(
+                    $('<div>').append(
+                        $('<h1>').append(content)
+                    )
+                )
+            );
         }
         hub.start(url);
     })();

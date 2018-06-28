@@ -65,7 +65,12 @@ namespace InterrogateMe.Data
             _context.SaveChanges();
         }
 
-
+        /// <summary>
+        /// Include the data specified on specification and stores into a queryable structure
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="specifications">Collection of specifications</param>
+        /// <returns></returns>
         private IQueryable<T> Include<T>(IEnumerable<ISpecification<T>> specifications) where T : BaseModel
         {
             var dataSet = _context.Set<T>();
