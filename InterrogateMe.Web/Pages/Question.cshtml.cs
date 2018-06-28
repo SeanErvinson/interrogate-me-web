@@ -1,6 +1,7 @@
 ﻿using InterrogateMe.Core.Data;
 using InterrogateMe.Core.Data.Specification;
 using InterrogateMe.Core.Models;
+using InterrogateMe.Utilities;
 using InterrogateMe.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -67,6 +68,19 @@ namespace InterrogateMe.Web.Pages
             if (resultTopic == null)
                 return NotFound();
 
+            if(resultTopic.PreventIpDuplication)
+            {
+                if (IsDuplicateIp(WebHelper.GetRemoteIP))
+                    return Page();
+
+                _repository.Add(new IpAddress
+                {
+                    Address = WebHelper.GetRemoteIP,
+                    UserAgent = WebHelper.GetUserAgent,
+                    TopicId = resultTopic.Id
+                });
+            }
+
             resultTopic.Questions.Add(Question);
 
             _repository.Update(resultTopic);
@@ -74,6 +88,11 @@ namespace InterrogateMe.Web.Pages
             InterrogateClient.UpdateList(TempLink, Question);
 
             return RedirectToPage("Result");
+        }
+
+        private bool IsDuplicateIp(string ipAddress)
+        {
+            return _repository.Single(IpAddressSpecification.ByIpAddress(ipAddress)) != null;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using InterrogateMe.Core.Data.Specification;
 using InterrogateMe.Core.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace InterrogateMe.Core.Data
 {
