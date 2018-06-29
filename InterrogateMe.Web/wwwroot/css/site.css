@@ -1,37 +1,307 @@
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification 
-for details on configuring this project to bundle and minify static web assets. */
+/* Base */
+html, body, h3, h1 {
+    height: 100%;
+    margin: 0
+}
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    color: #000;
+    font-family: Lato, sans-serif;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 22pt;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+* {
+    box-sizing: border-box;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+input {
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+form{
+    padding: 20px 0px;
+}
+
+/* tooltip */
+
+.tooltiphold {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltiptext {
+    margin: 10px;
+    padding: 10px;
+    font-size: .55em;
+}
+
+.tooltiphold .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #ffffff;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 115%;
+    left: 50%;
+    margin-left: -100px;
+}
+
+.tooltiphold:hover .tooltiptext {
+    visibility: visible;
+    box-shadow: 0px 3px 30px #a5a5a5;
+}
+
+/* TL */
+.wrapper {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.container {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.bound {
+    padding: 10px 14vw;
+}
+
+.header {
+    flex: 0 1 auto;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    z-index:1;
+}
+
+.content {
+    flex: 1 1 auto;
+    background-color: #fbfbfb;
+}
+
+.footer {
+    flex: 0 1 40px;
+    color: #5A5959;
     width: 100%;
+    font-size: 0.55em;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+.sub-container {
+    margin: 25px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    background-color: #ffffff;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+.sub-container p{
+    font-size: .65em;
+}
+
+/*General*/
+.heroHeader {
+    font-size: .95em;
+    padding: 15px 0px;
+}
+
+.subHeader {
+    font-size: .9em;
+}
+.subSection{
+    padding: 15px;
+}
+
+.subInput, .mainInput {
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 5px;
+    width: 15em;
+}
+
+.subInput {
+    font-size: .6em;
+}
+
+.mainInput {
+    font-size: .75em;
+}
+
+.mainInput:focus, .subInput:focus {
+    outline: none !important;
+    border: 0px;
+    border-bottom: 1px solid rgb(16, 191, 255);
+}
+
+/* navbar */
+
+.navbar {
+    width: 100%;
+    height: 64px;
+    padding: 0 16px;
+    top: 0;
+}
+
+.navbar .logo {
+    float: left;
+    padding-top: 8px;
+    display: block;
+    border: 0;
+}
+
+.navbar ul {
+    float: right;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    height: 100%;
+    vertical-align: middle;
+    display:inline;
+}
+
+.navbar ul li a {
+    height: 100%;
+    padding: 0 16px;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: .65em;
+    transition: color, background-color 375ms ease;
+}
+
+/* Home */
+
+.checkboxes {
+    padding: 10px 6.5vw;
+}
+
+.checkbox {
+    text-align: left;
+}
+
+.checkbox label {
+    padding-left: 12px;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: .7em;
+}
+
+
+.mainButton {
+    font-size: .85em;
+    padding: 7px 50px;
+    border: 0px;
+    background-color: #ca302c !important;
+    color: white;
+}
+
+.subButton {
+    font-size: .75em;
+    padding: 7px 20px;
+    border: 0px;
+    background-color: #a22a26 !important;
+    color: white;
+}
+
+/*Question*/
+.subInput.readonly {
+    background-color: #DEDEDE;
+    border: 1px solid;
+    width: 18em;
+}
+
+.mainInput.extended{
+    width: 20em;
+}
+
+.choice{
+    margin: 10px 10px;
+}
+
+.result {
+    color: #888888;
+}
+
+.qrCode{
+    padding: 10px;
+}
+
+.qrCode img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Media */
+
+@media only screen and (max-width: 1024px) {
+    body {
+        font-size: 18pt;
+    }
+
+    .sub-container {
+        margin: 15px;
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+    }
+
+    .bound {
+        padding: 10px 6.5vw;
+    }
+
+    .container {
+        max-width: 80%;
+    }
+
+    .navbar {
+        height: 54px;
+    }
+    .mainInput.extended {
+        width: 18em;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+    body {
+        font-size: 14pt;
+    }
+
+    .sub-container {
+        margin: 10px;
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+    }
+
+    .bound {
+        padding: 10px 2.9vw;
+    }
+
+    .container {
+        max-width: 90%;
+    }
+
+    .navbar {
+        height: 42px;
+    }
+    .mainInput.extended {
+        width: 16em;
+    }
+    .subInput.readonly {
+        width: 19em;
     }
 }

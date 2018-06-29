@@ -1,30 +1,69 @@
 ﻿@page "{link}"
 @model InterrogateMe.Web.Pages.QuestionModel
 
-<h1>@Model.Title</h1>
-
-<div>
-    <form method="post">
-        <input type="hidden" asp-for="@Model.TempLink" value="@Model.ShortcutLink" />
-        <label>Enter your question:</label>
-        <input asp-for="@Model.Question.Content" type="text" />
-        <input type="submit" value="Ask" />
-        <input type="hidden" asp-for="Url" value="@Model.Url" />
-        <a asp-page="Result">Results</a>
-    </form>
+<div class="content">
+    <div class="container bound">
+        <div class="sub-container">
+            <h1 class="heroHeader">
+                @Model.Title
+            </h1>
+            <form method="post">
+                <input type="hidden" asp-for="@Model.TempLink" value="@Model.ShortcutLink" />
+                <div class="subSection">
+                    <input class="mainInput extended" asp-for="@Model.Question.Content" placeholder="Enter your question..." type="text" />
+                </div>
+                <div class="subSection">
+                    <button class="mainButton choice">Ask</button>
+                    <a class="result choice" asp-page="Result">Results</a>
+                </div>
+            </form>
+        </div>
+        <div class="sub-container">
+            <div class="subSection">
+                <h1 class="subHeader">Share this link:</h1>
+                <input class="subInput readonly" id="shortcutUrl" readonly value="https://interrogate.me/@Model.ShortcutLink" />
+                <div id="qrcode" class="qrCode"></div>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a>
+                            <span>share</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span>tweet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span>share</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div>
-    <h1>Share this link:</h1>
-    <input id="shortcutUrl" readonly value="https://interrogate.me/@Model.ShortcutLink" />
-</div>
 
 
-@section Scripts{ 
+@section Scripts{
+    <script src="~/js/qrcode/qrcode.js"></script>
     <script>
+
         $("#shortcutUrl").on("click", function () {
-            document.getElementById("shortcutUrl").select();
+            $("#shortcutUrl").select();
             document.execCommand("copy");
+        });
+        var qrcode = new QRCode((document.getElementById("qrcode")), {
+            text: $("#shortcutUrl").val(),
+            width: 128,
+            height: 128,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
         });
     </script>
 }

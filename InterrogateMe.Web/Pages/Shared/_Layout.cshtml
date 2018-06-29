@@ -1,9 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @*Required Metadata*@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>InterrogateMe.Web</title>
+    <title>Interrogate Me - Create your Q and A for Free - Interrogate.Me</title>
+
+    @*Open Graph*@
+    <meta property="og:title" content="Interogate.Me">
+    <meta property="og:type" content="Summary">
+    <meta property="og:url" content="https://www.interrogate.me/">
+    <meta property="og:image">
+    <meta property="og:description" content="Interogate.me is the best place to ask a user a question. For free.">
+    <meta name="description" content="Interogate Me is the best place to ask a user a question. For free.">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/site.css" />
@@ -11,12 +20,38 @@
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    @*Fonts*@
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
 </head>
+
 <body>
- 
-    @RenderBody()
+    <div class="wrapper">
+        <div class="header">
+            <div class="navbar">
+                <a href="/" class="logo">Interrogate.Me</a>
+                <ul>
+                    <li>
+                        <a href="/">Create</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
 
-
+        <div class="footer">
+            <div>
+                <p>&copy; Copyright 2018 Interrogate.me. All rights reserved</p>
+            </div>
+            <div>
+                <p>
+                    <a href="/">Create</a> | 
+                    <a href="/About">About</a>
+                </p>
+            </div>
+        </div>
+    </div>
     <partial name="_CookieConsentPartial" />
 
     <environment include="Development">
