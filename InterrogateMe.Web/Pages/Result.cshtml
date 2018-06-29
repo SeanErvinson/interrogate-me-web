@@ -14,8 +14,10 @@
             <ul id="questionList">
                 @foreach(var question in Model.Questions) {
                 <li>
-                    <div id=@question.id class="questions">
+                    <div id=@question.Id class="questions">
                         <h1>@question.Content</h1>
+                        // Small sidenote on the right
+                        <span>@question.DateAsked</span>
                     </div>
                 </li>
                 }
@@ -48,6 +50,11 @@
         }
         hub.start(url);
     })();
+    $("#sortby").on('click', function(){
+        $('#questionList').children().each(element => {
+            element.addClass('minimize');
+        });
+    });
     $("#minimize").on('click', function(){
         $('#questionList').children().each(element => {
             element.addClass('minimize');
