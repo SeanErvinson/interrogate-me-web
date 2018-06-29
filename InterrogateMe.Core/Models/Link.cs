@@ -12,6 +12,6 @@ namespace InterrogateMe.Core.Models
 
         public Topic Topic { get; set; }
 
-        public DateTime DateAsked { get; set; } = DateTime.UtcNow;
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     }
 }
