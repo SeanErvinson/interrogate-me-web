@@ -7,11 +7,11 @@
 
 <div class="content">
     <div class="container bound">
-        <h1 class="heroHeader">Create a question and answer poll</h1>
+        <h1 class="heroHeader">Create a <strong class="red">question</strong> and <strong class="green">answer</strong> poll</h1>
         <div class="sub-container">
             <form method="post">
                 <input class="mainInput" asp-for="@Model.Topic.Title" type="text" placeholder="Enter title of the poll..." required />
-                <div class="checkboxes">
+                <div class="checkboxes subSection">
                     <div class="checkbox">
                         <input id="ipDuplication" asp-for="@Model.Topic.PreventIpDuplication" type="checkbox" />
                         <label asp-for="@Model.Topic.PreventIpDuplication" for="ipDuplication"></label>
@@ -38,7 +38,7 @@
         </div>
         <div class="sub-container">
             <div>
-                <h1 class="subHeader">Ask a question</h1>
+                <h1 class="subHeader">Search a poll</h1>
             </div>
             <div class="subSection" id="shortcut">
                 <input id="shortcutLink" class="subInput center" type="text" placeholder="Enter link..." />
@@ -50,8 +50,7 @@
         <div class="sub-container">
             <p>Got any feedback? Feel free emailing me your suggestions</p>
             <div class="subSection">
-                <a class="minorButton" href="/Contact">
-                    <p class="subHeader">Contact Me</p>
+                <a class="subButton greenbutton" href="/Contact">Contact Me
                 </a>
             </div>
         </div>

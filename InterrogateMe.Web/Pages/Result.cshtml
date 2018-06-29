@@ -1,19 +1,24 @@
 ﻿@page "{link}"
 @model InterrogateMe.Web.Pages.ResultModel
 
-<h2>Result</h2>
 
-<ul id="questionList">
-    @foreach(var question in Model.Questions)
-    {
-        <li>
-            <div>
-                <h1>@question.Content</h1>
-            </div>
-        </li>
-    }
-</ul>
+<div class="content">
+    <div class="container bound">
+        <div class="sub-container">
+            <h2>Result</h2>
 
+            <ul id="questionList">
+                @foreach(var question in Model.Questions) {
+                <li>
+                    <div id=@question.id class="questions">
+                        <h1>@question.Content</h1>
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 @section Scripts{
@@ -39,6 +44,4 @@
         }
         hub.start(url);
     })();
-</script>
-
-}
+</script> }

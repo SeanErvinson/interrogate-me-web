@@ -80,7 +80,7 @@ form{
 }
 
 .bound {
-    padding: 10px 14vw;
+    padding: 10px 12vw;
 }
 
 .header {
@@ -115,6 +115,7 @@ form{
 /*General*/
 .heroHeader {
     font-size: .95em;
+    font-weight: 300;
     padding: 15px 0px;
 }
 
@@ -186,6 +187,9 @@ form{
 }
 
 /* Home */
+.heroHeader strong{
+    font-weight: 700;
+}
 
 .checkboxes {
     padding: 10px 6.5vw;
@@ -199,7 +203,7 @@ form{
     padding-left: 12px;
     vertical-align: middle;
     display: inline-block;
-    font-size: .7em;
+    font-size: .67em;
 }
 
 
@@ -217,6 +221,10 @@ form{
     border: 0px;
     background-color: #a22a26 !important;
     color: white;
+}
+
+.subButton.greenbutton{
+    background-color: #3eb991 !important;
 }
 
 /*Question*/
@@ -247,6 +255,16 @@ form{
     margin-right: auto;
 }
 
+/* Misc */
+.red{
+    color:#a22a26;
+}
+
+.green{
+    color: #3eb991;
+}
+
+
 /* Media */
 
 @media only screen and (max-width: 1024px) {
@@ -261,7 +279,7 @@ form{
     }
 
     .bound {
-        padding: 10px 6.5vw;
+        padding: 10px 6.3vw;
     }
 
     .container {
