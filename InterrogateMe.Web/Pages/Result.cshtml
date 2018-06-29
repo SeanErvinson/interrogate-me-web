@@ -6,7 +6,11 @@
     <div class="container bound">
         <div class="sub-container">
             <h2>Result</h2>
-
+            <div>
+                <a href="@Model.Url">Ask</a>
+                <input type="image" alt="Maximize All"/>
+                <input type="image" alt="Minimize All"/>
+            </div>
             <ul id="questionList">
                 @foreach(var question in Model.Questions) {
                 <li>
@@ -44,4 +48,15 @@
         }
         hub.start(url);
     })();
+    $("#minimize").on('click', function(){
+        $('#questionList').children().each(element => {
+            element.addClass('minimize');
+        });
+    });
+    $("#maximize").on('click', function(){
+        $('#questionList').children().each(element => {
+            element.removeClass('minimize');
+        });
+    });
+
 </script> }
