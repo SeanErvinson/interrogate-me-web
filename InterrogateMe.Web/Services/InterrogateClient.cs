@@ -16,6 +16,11 @@ namespace InterrogateMe.Web.Services
         public void UpdateList(string groupName, Question newQuestion)
         {
             _hubContext.Clients.Group(groupName).SendAsync("OnNotifyList", newQuestion);
-        }    
+        }
+
+        public void UpdateLike(string groupName)
+        {
+            _hubContext.Clients.Group(groupName).SendAsync("OnUpdateLike");
+        }
     }
 }
