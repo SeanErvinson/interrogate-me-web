@@ -7,8 +7,11 @@ namespace InterrogateMe.Core.Models
     {
         [Required]
         public string Address { get; set; }
+
         public string UserAgent { get; set; }
+
         public Guid TopicId { get; set; }
+
         public Topic Topic { get; set; }
     }
 }

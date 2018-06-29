@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    string tooltipNsfw = "Allow user to ask profane/nsfw question/s.";
+    string tooltipNsfw = "Prevent profane or vulgar words as much as possible.";
     string tooltipIpDuplication = "Check if Ip has already asked. Prevents spam.";
 }
 
@@ -14,15 +14,15 @@
                 <div class="checkboxes">
                     <div class="checkbox">
                         <input id="ipDuplication" asp-for="@Model.Topic.PreventIpDuplication" type="checkbox" />
-                        <label asp-for="@Model.Topic.PreventIpDuplication" for="ipDuplication">Prevent Ip Duplication</label>
+                        <label asp-for="@Model.Topic.PreventIpDuplication" for="ipDuplication"></label>
                         <div class="tooltiphold">
                             <img class="tooltiphold" src="~/images/questi1on.svg" />
                             <span class="tooltiptext">@tooltipIpDuplication</span>
                         </div>
                     </div>
                     <div class="checkbox">
-                        <input id="nsfw" asp-for="@Model.Topic.AllowNsfw" type="checkbox" />
-                        <label asp-for="@Model.Topic.AllowNsfw" for="nsfw">Allow NSFW</label>
+                        <input id="nsfw" asp-for="@Model.Topic.PreventNSFW" type="checkbox" />
+                        <label asp-for="@Model.Topic.PreventNSFW" for="nsfw"></label>
                         <div class="tooltiphold">
                             <img class="tooltiphold" src="~/images/quest1ion.svg" />
                             <span class="tooltiptext">@tooltipNsfw</span>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="checkbox">
                         <input id="multipleVote" asp-for="@Model.Topic.AllowMultipleLikes" type="checkbox" />
-                        <label asp-for="@Model.Topic.AllowMultipleLikes" for="multipleVote">Allow multiple votes</label>
+                        <label asp-for="@Model.Topic.AllowMultipleLikes" for="multipleVote"></label>
                     </div>
                 </div>
                 <button class="mainButton">Create</button>
