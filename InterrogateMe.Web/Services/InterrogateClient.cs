@@ -22,5 +22,10 @@ namespace InterrogateMe.Web.Services
         {
             _hubContext.Clients.Group(groupName).SendAsync("OnUpdateLike");
         }
+
+        public void UpdateParticipantCount(string groupName, int count)
+        {
+            _hubContext.Clients.Group(groupName).SendAsync("OnUpdateParticipantCount", count);
+        }
     }
 }

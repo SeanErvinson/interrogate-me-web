@@ -6,7 +6,7 @@ namespace InterrogateMe.Core.Models
     public class Question : BaseModel
     {
         [Required]
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(int.MaxValue, MinimumLength = 2)]
         public string Content { get; set; }
 
         public DateTime DateAsked { get; set; } = DateTime.UtcNow;

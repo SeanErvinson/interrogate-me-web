@@ -118,6 +118,11 @@ form{
     font-weight: 300;
     padding: 15px 0px;
 }
+mainHeader {
+    font-size: .90em;
+    font-weight: 700;
+    padding: 15px 0px;
+}
 
 .subHeader {
     font-size: .9em;
@@ -187,6 +192,10 @@ form{
 }
 
 /* Home */
+.image {
+    height: .5em;
+    width: .5em;
+}
 .heroHeader strong{
     font-weight: 700;
 }
@@ -253,6 +262,71 @@ form{
 .qrCode img {
     margin-left: auto;
     margin-right: auto;
+}
+
+/*Result*/
+#state{
+    display: inline;
+}
+
+#questionList {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.questionTitle{
+    margin: 0;
+    padding: 30px;
+    font-size: .8em;
+    font-weight: 700;
+}
+
+.border {
+    box-shadow: 0px -2px 5px 1px rgba(0, 0, 0, 0.2);
+    border: 0px;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    background-color: #60C5E6;
+    width: 100%;
+}
+
+.active, .border:hover {
+    background-color: #4d9db7;
+}
+
+
+.titlePlace{
+    padding:  15px;
+}
+
+.question {
+    padding: 0px 0px 10px 0px;
+    margin-bottom: 23px;
+    box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.panel {
+    display: block;
+}
+
+.minimize {
+    display: none;
+    overflow: hidden;
+}
+
+.dataPlace{
+    position: relative;
+}
+
+.date {
+    position: absolute;
+    padding-right: 10px;
+    right: 0;
+    bottom: 0;
+    font-weight: 300;
+    font-size: .5em;
 }
 
 /* Misc */
