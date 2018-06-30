@@ -5,19 +5,28 @@
 <div class="content">
     <div class="container bound">
         <div class="sub-container">
-            <h2>Result</h2>
+            <h2 class="mainHeader">Result</h2>
             <div>
-                <a href="@Model.Url">Ask</a>
-                <input type="image" alt="Maximize All"/>
-                <input type="image" alt="Minimize All"/>
+                <a href="/@Model.Link" class="subButton">Ask</a>
+                <div id="state">    
+                    <img class="image" src="~/images/window-minimize-solid.svg"/>
+                    <img class="image" src="~/images/window-maximize-solid.svg"style="display:none" />
+                </div>
+                <div>
+                    Number of participant: <span id="participantCount">@Model.Questions.Count()</span>
+                </div>
             </div>
             <ul id="questionList">
                 @foreach(var question in Model.Questions) {
                 <li>
-                    <div id=@question.Id class="questions">
-                        <h1>@question.Content</h1>
-                        // Small sidenote on the right
-                        <span>@question.DateAsked</span>
+                    <button class="border"></button>
+                    <div id=@question.Id class="question panel">
+                        <div class="titlePlace">
+                            <p class="questionTitle">@question.Content</p>
+                        </div>
+                        <div class="dataPlace">
+                            <span class="date">@question.DateAsked.ToLocalTime()</span>
+                        </div>
                     </div>
                 </li>
                 }
@@ -38,15 +47,25 @@
 
         var hub = new InterrogateHub();
 
+        hub.onParticipantCount = (count) => {
+            console.log(count);
+            $("#participantCount").html(count);
+        }
+
         hub.onNotifyList = (question) => {
-            var content = question.content;
-            $("#questionList").append(
-                $('<li>').append(
-                    $('<div>').append(
-                        $('<h1>').append(content)
-                    )
-                )
-            );
+            var date = new Date(Date.parse(question.dateAsked)).toLocaleString();
+            var html = '<li>' +
+                '<button class="border"></button>'+
+                '<div id= + ' + question.id + ' class=question panel>' +
+                '<div class=titlePlace>'+
+                '<p class=questionTitle>'+question.content+'</p>' +
+                '</div>' +
+                '<div class=dataPlace>' +
+                '<span class=date>' + date + '</span>' +
+                '</div>' +
+                '</div>' +
+                '</li>';
+            $("#questionList").append(html);
         }
         hub.start(url);
     })();
@@ -55,15 +74,15 @@
             element.addClass('minimize');
         });
     });
-    $("#minimize").on('click', function(){
-        $('#questionList').children().each(element => {
-            element.addClass('minimize');
+    $("#state").on('click', function () {
+        $('.question').toggleClass('minimize');
+        $('.border').toggleClass("active");
+        $(this).find('img').toggle();
+    });
+    $(".border").each(function (index) {
+        $(this).on("click", function () {
+            $(this).toggleClass("active");
+            $(this).next().toggleClass("minimize");
         });
     });
-    $("#maximize").on('click', function(){
-        $('#questionList').children().each(element => {
-            element.removeClass('minimize');
-        });
-    });
-
 </script> }

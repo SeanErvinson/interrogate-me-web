@@ -90,6 +90,8 @@ namespace InterrogateMe.Web.Pages
 
             InterrogateClient.UpdateList(TempLink, Question);
 
+            InterrogateClient.UpdateParticipantCount(TempLink, resultTopic.Questions.Count);
+
             return RedirectToPage("Result");
         }
 
