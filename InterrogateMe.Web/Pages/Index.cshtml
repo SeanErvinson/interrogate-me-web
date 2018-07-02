@@ -16,7 +16,9 @@
                         <input id="ipDuplication" asp-for="@Model.Topic.PreventIpDuplication" type="checkbox" />
                         <label asp-for="@Model.Topic.PreventIpDuplication" for="ipDuplication"></label>
                         <div class="tooltiphold">
-                            <img class="tooltiphold image" src="~/images/question.svg" />
+                            <span class="tooltiphold image">
+                                <i class="fas fa-question"></i>
+                            </span>
                             <span class="tooltiptext">@tooltipIpDuplication</span>
                         </div>
                     </div>
@@ -24,7 +26,9 @@
                         <input id="nsfw" asp-for="@Model.Topic.PreventNSFW" type="checkbox" />
                         <label asp-for="@Model.Topic.PreventNSFW" for="nsfw"></label>
                         <div class="tooltiphold">
-                            <img class="tooltiphold image" src="~/images/question.svg" />
+                            <span class="tooltiphold image">
+                                <i class="fas fa-question"></i>
+                            </span>
                             <span class="tooltiptext">@tooltipNsfw</span>
                         </div>
                     </div>

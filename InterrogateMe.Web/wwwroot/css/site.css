@@ -193,8 +193,7 @@ mainHeader {
 
 /* Home */
 .image {
-    height: .5em;
-    width: .5em;
+    font-size: .5em;
 }
 .heroHeader strong{
     font-weight: 700;
