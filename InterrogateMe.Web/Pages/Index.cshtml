@@ -32,6 +32,10 @@
                             <span class="tooltiptext">@tooltipNsfw</span>
                         </div>
                     </div>
+                    <div class="checkbox">
+                        <input id="multipleVote" asp-for="@Model.Topic.AllowMultipleLikes" type="checkbox" />
+                        <label asp-for="@Model.Topic.AllowMultipleLikes" for="multipleVote"></label>
+                    </div>
                 </div>
                 <button class="mainButton">Create</button>
             </form>
@@ -47,6 +51,13 @@
                 </div>
             </div>
             </div>
+        <div class="sub-container">
+            <p>Got any feedback? Feel free emailing me your suggestions</p>
+            <div class="subSection">
+                <a class="subButton greenbutton" href="/Contact">Contact Me
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
