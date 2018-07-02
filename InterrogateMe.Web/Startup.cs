@@ -40,6 +40,8 @@ namespace InterrogateMe.Web
 
             services.AddSingleton<InterrogateClient>();
 
+            //services.AddScoped<IEmailService, EmailService>();
+
             services.AddSignalR();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)

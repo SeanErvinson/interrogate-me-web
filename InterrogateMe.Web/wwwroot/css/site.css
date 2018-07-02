@@ -337,9 +337,26 @@ mainHeader {
     font-size: .5em;
 }
 
+/*Contact*/
+.input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px;
+    font-size: 18px;
+    outline: 0;
+    border: 1px #bbb solid;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #5a5959;
+}
+
+.inputLabel{
+    float: left;
+    font-size: .6em;
+}
 /* Misc */
-.red{
-    color:#a22a26;
+.red {
+    color: #a22a26;
 }
 
 .green{

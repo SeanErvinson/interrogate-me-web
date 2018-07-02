@@ -1,0 +1,25 @@
+﻿@page
+@model ContactModel
+
+<div class="content">
+    <div class="container bound">
+        <div class="sub-container">
+            <h2 class="heroHeader">Contact</h2>
+            <form>
+                <div>
+                    <label class="inputLabel" asp-for="Sender.Name">Full Name</label>
+                    <input class="input" asp-for="Sender.Name" type="text" />
+                </div>
+                <div>
+                    <label class="inputLabel" asp-for="Sender.Email">Email Address</label>
+                    <input class="input" asp-for="Sender.Email" type="email" />
+                </div>
+                <div>
+                    <label class="inputLabel" asp-for="Sender.Message">Suggestion/Message</label>
+                    <textarea class="input" asp-for="Sender.Message" rows="15"></textarea>
+                </div>
+                <button class="subButton greenbutton">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
