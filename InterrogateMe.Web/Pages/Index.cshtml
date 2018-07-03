@@ -11,6 +11,9 @@
         <div class="sub-container">
             <form method="post">
                 <input class="mainInput" asp-for="@Model.Topic.Title" type="text" placeholder="Enter title of the poll..." required />
+                <div>
+                    <span asp-validation-for="@Model.Topic.Title"></span>
+                </div>
                 <div class="checkboxes subSection">
                     <div class="checkbox">
                         <input id="ipDuplication" asp-for="@Model.Topic.PreventIpDuplication" type="checkbox" />

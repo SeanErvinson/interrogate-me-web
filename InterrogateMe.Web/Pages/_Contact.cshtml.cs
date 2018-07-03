@@ -10,16 +10,9 @@ namespace InterrogateMe.Web.Pages
 {
     public class ContactModel : PageModel
     {
-        #region Public Properties
-
-        [BindProperty]
-        public Sender Sender { get; set; }
-
-        #endregion
 
         #region Private Variables
-
-        private IEmailService _emailService;
+        
         private ILogger _logger;
 
         #endregion

@@ -10,7 +10,16 @@
             <form method="post">
                 <input type="hidden" asp-for="@Model.TempLink" value="@Model.ShortcutLink" />
                 <div class="subSection">
-                    <input class="mainInput extended" asp-for="@Model.Question.Content" placeholder="Enter your question..." type="text" />
+                    <input id="question" class="mainInput extended" asp-for="@Model.Question.Content" placeholder="Enter your question..." type="text" />
+                    @if (!Model.IsValidQuestion)
+                    {
+                        <div>
+                            <span class="validation">Question contains word/s that are considered as NSFW</span>
+                        </div>
+                    }
+                    <div>
+                        <span asp-validation-for="@Model.Question.Content"></span>
+                    </div>
                 </div>
                 <div class="subSection">
                     <button class="mainButton choice">Ask</button>
@@ -37,7 +46,6 @@
     <script src="~/js/jsSocials/jssocials.min.js"></script>
     <script src="~/js/qrcode/qrcode.min.js"></script>
     <script>
-
         $("#shortcutUrl").on("click", function () {
             $("#shortcutUrl").select();
             document.execCommand("copy");

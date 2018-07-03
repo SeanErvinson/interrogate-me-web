@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace InterrogateMe.Web.Pages
@@ -28,6 +29,8 @@ namespace InterrogateMe.Web.Pages
         [BindProperty]
         public Question Question { get; set; }
 
+        [TempData]
+        public bool IsValidQuestion { get; set; } = true;
         public InterrogateClient InterrogateClient { get; }
         public string Title { get; set; }
         public string ShortcutLink { get; set; }
@@ -44,9 +47,7 @@ namespace InterrogateMe.Web.Pages
             _logger = logger;
             this.InterrogateClient = interrrogateClient;
         }
-
-        // Consider changing the PK of topic to the url of the link
-        // So that when accessing the database I can search with ById(link.id)
+       
         public async Task OnGet(string link)
         {
             var resultLink = _repository.Single(LinkSpecification.ByUrl(link));
@@ -74,7 +75,7 @@ namespace InterrogateMe.Web.Pages
             if(resultTopic.PreventIpDuplication)
             {
                 if (IsDuplicateIp(WebHelper.GetRemoteIP))
-                    return Page();
+                    return RedirectToPage();
 
                 _repository.Add(new IpAddress
                 {
@@ -84,6 +85,15 @@ namespace InterrogateMe.Web.Pages
                 });
             }
 
+            if(resultTopic.PreventNSFW)
+            {
+                if(!IsNsfw(Question.Content))
+                {
+                    IsValidQuestion = false;
+                    return RedirectToPage();
+                }
+            }
+            
             resultTopic.Questions.Add(Question);
 
             _repository.Update(resultTopic);
@@ -93,6 +103,19 @@ namespace InterrogateMe.Web.Pages
             InterrogateClient.UpdateParticipantCount(TempLink, resultTopic.Questions.Count);
 
             return RedirectToPage("Result");
+        }
+
+        private bool IsNsfw(string question)
+        {
+            const string pattern = @"\s+";
+            var words = System.Text.RegularExpressions.Regex.Split(question.ToLower().Trim(), pattern);
+            foreach (var word in words)
+            {
+                var result = _repository.All(ProfaneWordSpecification.ByWord(word)).ToList();
+                if (result.Count > 0)
+                    return false;
+            }
+            return true;
         }
 
         private bool IsDuplicateIp(string ipAddress)
