@@ -6,7 +6,7 @@ namespace InterrogateMe.Core.Models
     public class Topic : BaseModel
     {
         [Required]
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(int.MaxValue, MinimumLength = 3, ErrorMessage = "Must have minimum length of 3")]
         public string Title { get; set; }
 
         [Display(Name = "Allow Multiple Likes")]

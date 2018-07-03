@@ -152,6 +152,16 @@ mainHeader {
     border-bottom: 1px solid rgb(16, 191, 255);
 }
 
+.validation {
+    color: #D0021B;
+    font-size: .6em;
+}
+
+.field-validation-error {
+    color: #D0021B;
+    font-size: .6em;
+}
+
 /* navbar */
 
 .navbar {
