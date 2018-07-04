@@ -16,18 +16,19 @@
                 </div>
             </div>
             <ul id="questionList">
-                @foreach(var question in Model.Questions) {
-                <li>
-                    <button class="border"></button>
-                    <div id=@question.Id class="question panel">
-                        <div class="titlePlace">
-                            <p class="questionTitle">@question.Content</p>
+                @foreach (var question in Model.Questions)
+                {
+                    <li>
+                        <button class="border"></button>
+                        <div id=@question.Id class="question panel">
+                            <div class="titlePlace">
+                                <p class="questionTitle">@question.Content</p>
+                            </div>
+                            <div class="dataPlace">
+                                <span class="date">@question.DateAsked.ToLocalTime()</span>
+                            </div>
                         </div>
-                        <div class="dataPlace">
-                            <span class="date">@question.DateAsked.ToLocalTime()</span>
-                        </div>
-                    </div>
-                </li>
+                    </li>
                 }
             </ul>
         </div>
@@ -37,55 +38,55 @@
 
 @section Scripts{
 
-<script src="~/lib/signalr/signalr.js"></script>
-<script src="~/js/interrogatehub.js"></script>
-<script>
-    (function () {
-        var url = window.location.pathname;
-        url = url.substring(url.lastIndexOf("/") + 1, url.length);
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script src="~/js/interrogatehub.js"></script>
+    <script>
+        (function () {
+            var url = window.location.pathname;
+            url = url.substring(url.lastIndexOf("/") + 1, url.length);
 
-        var hub = new InterrogateHub();
+            var hub = new InterrogateHub();
 
-        hub.onParticipantCount = (count) => {
-            console.log(count);
-            $("#participantCount").html(count);
-        }
+            hub.onParticipantCount = (count) => {
+                console.log(count);
+                $("#participantCount").html(count);
+            }
 
-        hub.onNotifyList = (question) => {
-            var date = new Date(Date.parse(question.dateAsked)).toLocaleString();
-            var html = '<li>' +
-                '<button class="border"></button>'+
-                '<div id= + ' + question.id + ' class=question panel>' +
-                '<div class=titlePlace>'+
-                '<p class=questionTitle>'+question.content+'</p>' +
-                '</div>' +
-                '<div class=dataPlace>' +
-                '<span class=date>' + date + '</span>' +
-                '</div>' +
-                '</div>' +
-                '</li>';
-            $("#questionList").append(html);
-        }
-        hub.start(url);
-    })();
+            hub.onNotifyList = (question) => {
+                var date = new Date(Date.parse(question.dateAsked)).toLocaleString();
+                var html = '<li>' +
+                    '<button class="border"></button>' +
+                    '<div id= + ' + question.id + ' class=question panel>' +
+                    '<div class=titlePlace>' +
+                    '<p class=questionTitle>' + question.content + '</p>' +
+                    '</div>' +
+                    '<div class=dataPlace>' +
+                    '<span class=date>' + date + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>';
+                $("#questionList").append(html);
+            }
+            hub.start(url);
+        })();
 
-    $("#sortby").on('click', function(){
-        $('#questionList').children().each(element => {
-            element.addClass('minimize');
+        $("#sortby").on('click', function () {
+            $('#questionList').children().each(element => {
+                element.addClass('minimize');
+            });
         });
-    });
-    $("#state").on('click', function () {
-        $('.question').toggleClass('minimize');
-        $('.border').toggleClass("active");
-        var text = $('#stateText').text();
-        $('#stateText').text(
-            text == "Minimize All" ? "Maximize All" : "Minimize All");
-        $(this).find('i').toggle();
-    });
-    $(".border").each(function (index) {
-        $(this).on("click", function () {
-            $(this).toggleClass("active");
-            $(this).next().toggleClass("minimize");
+        $("#state").on('click', function () {
+            $('.question').toggleClass('minimize');
+            $('.border').toggleClass("active");
+            var text = $('#stateText').text();
+            $('#stateText').text(
+                text == "Minimize All" ? "Maximize All" : "Minimize All");
+            $(this).find('i').toggle();
         });
-    });
-</script> }
+        $(".border").each(function (index) {
+            $(this).on("click", function () {
+                $(this).toggleClass("active");
+                $(this).next().toggleClass("minimize");
+            });
+        });
+    </script> }

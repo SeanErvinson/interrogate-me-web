@@ -18,12 +18,14 @@ namespace InterrogateMe.Web.TagHelpers
                 sb.AppendLine("<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>");
                 sb.AppendLine("<script>");
                 sb.AppendLine("     (adsbygoogle = window.adsbygoogle || []).push({");
-                sb.AppendLine($"        google_ad_client: {AdClient}");
-                sb.AppendLine("         enable_page_level_ads: true });");
-                sb.AppendLine("     });");
+                sb.AppendLine($"        google_ad_client: \"{AdClient}\",");
+                sb.AppendLine("         enable_page_level_ads: true");
+                sb.AppendLine("       }); ");
                 sb.AppendLine("</script>");
 
-                output.Content.SetHtmlContent(sb.ToString());
+                
+
+            output.Content.SetHtmlContent(sb.ToString());
             }
         }
     }
