@@ -6,8 +6,8 @@ using InterrogateMe.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace InterrogateMe.Web.Pages
@@ -66,7 +66,7 @@ namespace InterrogateMe.Web.Pages
 
             if (resultLink == null)
                 return NotFound();
-
+            
             var resultTopic = _repository.SingleInclude(BaseSpecification<Topic>.ById(resultLink.TopicId), new List<ISpecification<Topic>> { TopicSpecification.IncludeQuestions() });
 
             if (resultTopic == null)
@@ -77,12 +77,7 @@ namespace InterrogateMe.Web.Pages
                 if (IsDuplicateIp(WebHelper.GetRemoteIP))
                     return RedirectToPage();
 
-                _repository.Add(new IpAddress
-                {
-                    Address = WebHelper.GetRemoteIP,
-                    UserAgent = WebHelper.GetUserAgent,
-                    TopicId = resultTopic.Id
-                });
+                AddIpAddress(resultTopic.Id);
             }
 
             if(resultTopic.PreventNSFW)
@@ -105,14 +100,23 @@ namespace InterrogateMe.Web.Pages
             return RedirectToPage("Result");
         }
 
+        private void AddIpAddress(Guid id)
+        {
+            _repository.Add(new IpAddress
+            {
+                Address = WebHelper.GetRemoteIP,
+                UserAgent = WebHelper.GetUserAgent,
+                TopicId = id
+            });
+        }
+
         private bool IsNsfw(string question)
         {
             const string pattern = @"\s+";
             var words = System.Text.RegularExpressions.Regex.Split(question.ToLower().Trim(), pattern);
             foreach (var word in words)
             {
-                var result = _repository.All(ProfaneWordSpecification.ByWord(word)).ToList();
-                if (result.Count > 0)
+                if (_repository.All(ProfaneWordSpecification.ByWord(word)).Count > 0)
                     return false;
             }
             return true;

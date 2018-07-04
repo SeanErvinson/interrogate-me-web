@@ -11,6 +11,7 @@ namespace InterrogateMe.Web.Pages
     {
         public void OnGet()
         {
+
         }
     }
 }

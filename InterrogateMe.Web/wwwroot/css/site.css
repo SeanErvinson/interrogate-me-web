@@ -245,6 +245,44 @@ mainHeader {
     background-color: #3eb991 !important;
 }
 
+/*TOS*/
+.tos {
+    text-align: left;
+}
+
+.tos > h1 {
+    font-weight: 300;
+}
+
+.tos > ol {
+    font-size: .7em;
+}
+
+.privacy > p {
+    font-size: .5em;
+}
+
+/*Privacy*/
+.privacy{
+    text-align: left;
+}
+
+.privacy > h1{
+    font-weight: 300;
+}
+
+.privacy > h2,h3,h4 {
+    font-size: .9em;
+}
+
+.privacy > ul {
+    font-size: .7em;
+}
+
+.privacy > p {
+    font-size: .5em;
+}
+
 /*Question*/
 .subInput.readonly {
     background-color: #DEDEDE;

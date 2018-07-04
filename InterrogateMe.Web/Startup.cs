@@ -47,6 +47,7 @@ namespace InterrogateMe.Web
                 {
                     options.Conventions.AddPageRoute("/Question", "/{link}");
                     options.Conventions.AddPageRoute("/Result", "/r/{link}");
+                    options.Conventions.AddPageRoute("/TermsOfService", "/tos");
                 });
         }
 

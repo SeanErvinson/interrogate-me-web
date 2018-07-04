@@ -26,7 +26,7 @@ namespace InterrogateMe.Data
             _context.SaveChanges();
         }
 
-        public IEnumerable<T> All<T>(ISpecification<T> specification) where T : BaseModel
+        public ICollection<T> All<T>(ISpecification<T> specification) where T : BaseModel
         {
             var dataSet = _context.Set<T>();
             return specification != null ? dataSet.Where(specification.Criteria).ToList() : dataSet.ToList();
