@@ -8,10 +8,12 @@ namespace InterrogateMe.Core.Models
         [Required]
         public string Url { get; set; }
 
+        [Required]
         public Guid TopicId { get; set; }
 
         public Topic Topic { get; set; }
 
+        [DataType(DataType.DateTime)]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     }
 }
