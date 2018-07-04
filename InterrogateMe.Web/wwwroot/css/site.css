@@ -118,7 +118,7 @@ form{
     font-weight: 300;
     padding: 15px 0px;
 }
-mainHeader {
+.mainHeader {
     font-size: .90em;
     font-weight: 700;
     padding: 15px 0px;
@@ -243,6 +243,20 @@ mainHeader {
 
 .subButton.greenbutton{
     background-color: #3eb991 !important;
+}
+
+/*Error*/
+.errorHeader {
+    font-weight: 300;
+    padding: 15px 0px;
+}
+
+.errorSubHeader {
+    font-weight: 400;
+}
+
+.error > p {
+    font-size: .7em;
 }
 
 /*TOS*/

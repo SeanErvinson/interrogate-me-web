@@ -1,23 +1,21 @@
 ﻿@page
 @model ErrorModel
-@{
-    ViewData["Title"] = "Error";
-}
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<div class="content">
+    <div class="container bound">
+        <h1 class="errorHeader">Uh oh! Spaghettiooo</h1>
+        <h2 class="errorSubHeader">Error <span class="red">404</span> Not Found </h2>
 
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
-
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
-</p>
+        <div class="error">
+            <p>
+                We can’t find the URL you’re looking for.
+            </p>
+            <p>
+                If you want to create a new straw poll, go to the <a class="green" href="/">Home Page</a>.
+            </p>
+            <p>
+                But if you rather want to look at senseless error pages, feel free to take a rest here.
+            </p>
+        </div>
+    </div>
+</div>
