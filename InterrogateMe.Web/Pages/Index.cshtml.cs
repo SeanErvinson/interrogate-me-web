@@ -37,7 +37,7 @@ namespace InterrogateMe.Web.Pages
         {
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             string generatedUrl;
             if (!ModelState.IsValid)
