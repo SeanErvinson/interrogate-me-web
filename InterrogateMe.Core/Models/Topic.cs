@@ -18,6 +18,6 @@ namespace InterrogateMe.Core.Models
         [Display(Name ="Prevent NSFW")]
         public bool PreventNSFW { get; set; }
 
-        public IList<Question> Questions { get; set; }
+        public ICollection<Question> Questions { get; set; }
     }
 }
