@@ -1,10 +1,4 @@
-﻿using System.Net.Mail;
-using System.Threading.Tasks;
-using InterrogateMe.Core.Data;
-using InterrogateMe.Core.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace InterrogateMe.Web.Pages
 {
@@ -13,7 +7,7 @@ namespace InterrogateMe.Web.Pages
 
         #region Private Variables
         
-        private ILogger _logger;
+        //private ILogger _logger;
 
         #endregion
 
