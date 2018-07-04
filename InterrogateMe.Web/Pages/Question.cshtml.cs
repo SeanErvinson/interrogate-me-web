@@ -48,7 +48,7 @@ namespace InterrogateMe.Web.Pages
             this.InterrogateClient = interrrogateClient;
         }
        
-        public async Task OnGet(string link)
+        public void OnGet(string link)
         {
             var resultLink = _repository.Single(LinkSpecification.ByUrl(link));
             var resultTopic = _repository.Single(BaseSpecification<Topic>.ById(resultLink.TopicId));
@@ -57,7 +57,7 @@ namespace InterrogateMe.Web.Pages
             ShortcutLink = link;
         }
 
-        public async Task<IActionResult> OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
                 return Page();
