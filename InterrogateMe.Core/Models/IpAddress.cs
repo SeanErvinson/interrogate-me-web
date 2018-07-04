@@ -10,6 +10,7 @@ namespace InterrogateMe.Core.Models
 
         public string UserAgent { get; set; }
 
+        [Required]
         public Guid TopicId { get; set; }
 
         public Topic Topic { get; set; }
