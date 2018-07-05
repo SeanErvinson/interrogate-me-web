@@ -32,7 +32,7 @@ namespace InterrogateMe.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<TodoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddEntityFrameworkNpgsql().AddDbContext<InterrogateDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("InterrogateDbContext")));
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

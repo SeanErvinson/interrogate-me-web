@@ -3,23 +3,21 @@ using System;
 using InterrogateMe.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace InterrogateMe.Data.Migrations
 {
     [DbContext(typeof(InterrogateDbContext))]
-    [Migration("20180629151433_Renamed_PreventNSFW")]
-    partial class Renamed_PreventNSFW
+    partial class InterrogateDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("InterrogateMe.Core.Models.IpAddress", b =>
                 {
@@ -45,7 +43,7 @@ namespace InterrogateMe.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DateAsked");
+                    b.Property<DateTime>("DateCreated");
 
                     b.Property<Guid>("TopicId");
 
@@ -59,13 +57,28 @@ namespace InterrogateMe.Data.Migrations
                     b.ToTable("Links");
                 });
 
+            modelBuilder.Entity("InterrogateMe.Core.Models.ProfaneWord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Word");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProfaneWords");
+                });
+
             modelBuilder.Entity("InterrogateMe.Core.Models.Question", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Content")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(2147483647);
+
+                    b.Property<DateTime>("DateAsked");
 
                     b.Property<int>("Like");
 
@@ -90,7 +103,8 @@ namespace InterrogateMe.Data.Migrations
                     b.Property<bool>("PreventNSFW");
 
                     b.Property<string>("Title")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(2147483647);
 
                     b.HasKey("Id");
 
