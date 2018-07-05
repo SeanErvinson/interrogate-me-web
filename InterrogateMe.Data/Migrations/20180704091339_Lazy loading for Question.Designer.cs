@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InterrogateMe.Data.Migrations
 {
-    [DbContext(typeof(TodoDbContext))]
+    [DbContext(typeof(InterrogateDbContext))]
     [Migration("20180704091339_Lazy loading for Question")]
     partial class LazyloadingforQuestion
     {

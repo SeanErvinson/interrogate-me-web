@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InterrogateMe.Data.Migrations
 {
-    [DbContext(typeof(TodoDbContext))]
+    [DbContext(typeof(InterrogateDbContext))]
     [Migration("20180627112544_Question_TopicIdRemoved")]
     partial class Question_TopicIdRemoved
     {

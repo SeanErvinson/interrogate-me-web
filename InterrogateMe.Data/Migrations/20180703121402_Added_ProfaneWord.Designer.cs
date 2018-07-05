@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InterrogateMe.Data.Migrations
 {
-    [DbContext(typeof(TodoDbContext))]
+    [DbContext(typeof(InterrogateDbContext))]
     [Migration("20180703121402_Added_ProfaneWord")]
     partial class Added_ProfaneWord
     {

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace InterrogateMe.Data.Migrations
 {
-    [DbContext(typeof(TodoDbContext))]
+    [DbContext(typeof(InterrogateDbContext))]
     [Migration("20180624162358_Added_DateTime")]
     partial class Added_DateTime
     {

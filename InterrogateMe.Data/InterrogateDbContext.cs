@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InterrogateMe.Data
 {
-    public class TodoDbContext : DbContext
+    public class InterrogateDbContext : DbContext
     {
-        public TodoDbContext(DbContextOptions options) : base(options)
+        public InterrogateDbContext(DbContextOptions options) : base(options)
         {
 
         }

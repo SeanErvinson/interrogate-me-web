@@ -13,9 +13,9 @@ namespace InterrogateMe.Data
     /// </summary>
     public class Repository : IRepository
     {
-        private readonly TodoDbContext _context;
+        private readonly InterrogateDbContext _context;
 
-        public Repository(TodoDbContext context)
+        public Repository(InterrogateDbContext context)
         {
             _context = context;
         }
