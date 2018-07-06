@@ -201,6 +201,31 @@ form{
     transition: color, background-color 375ms ease;
 }
 
+/*Consent*/
+.consentForm {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1em 1.8em;
+    background-color: #222222;
+    color: white;
+    font-size: .6em;
+}
+
+.learnMore {
+    color: #2E98D8;
+}
+
+.consentButton {
+    padding: 5px 20px;
+    border-radius: 3px;
+    font-size: 1em;
+    color: white;
+    border-color: transparent;
+    background-color: #e62576;
+}
+
 /* Home */
 .image {
     font-size: .5em;
@@ -424,6 +449,7 @@ form{
 .green{
     color: #3eb991;
 }
+
 
 
 /* Media */
