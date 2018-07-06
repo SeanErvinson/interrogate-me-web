@@ -20,7 +20,7 @@
         (function () {
             document.querySelector("#cookieConsent button[data-cookie-string]").addEventListener("click", function (el) {
                 document.cookie = el.target.dataset.cookieString;
-                $("#cookieConsent").toggleClass();
+                $("#cookieConsent").toggle();
             }, false);
         })();
     </script>
