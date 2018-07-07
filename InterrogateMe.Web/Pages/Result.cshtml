@@ -1,20 +1,19 @@
 ﻿@page "{link}"
 @model InterrogateMe.Web.Pages.ResultModel
 
-@section Header{    
-    @*Open Graph*@
-    <meta property="og:title" content="@Model.Title">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.interrogate.me/@Model.Link">
-    <meta property="og:site_name" content="Interrogate.me">
-    <meta property="og:image" content="/favicon.ico">
-    <meta property="og:description" content="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free.">
-    @*Twitter*@
-    <meta name="twitter:card" content="website">
-    <meta name="twitter:url" content="https://www.interrogate.me/@Model.Link">
-    <meta name="twitter:title" content="@Model.Title">
-    <meta name="twitter:description" content="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free.">
-    <meta name="twitter:image" content="/favicon.ico">
+@section Header{
+    <facebook-meta description="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free."
+                   url="https://www.interrogate.me/@Model.Link"
+                   image-url="https://www.interrogate.me/mstile-150x150.png"
+                   title="@Model.Title"
+                   type="website"
+                   site-name="Interrogate.me"></facebook-meta>
+    <twitter-meta card="summary_large_image"
+                  creator="Interrogate.me"
+                  description="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free."
+                  title="@Model.Title"
+                  site="Interrogate.me"
+                  image-url="https://www.interrogate.me/mstile-150x150.png"></twitter-meta>
     <google-ad-sense ad-client="ca-pub-3213478567330372"></google-ad-sense>
 }
 
