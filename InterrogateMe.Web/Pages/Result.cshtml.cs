@@ -20,6 +20,7 @@ namespace InterrogateMe.Web.Pages
 
         public IEnumerable<Question> Questions { get; set; }
         public string Link { get; set; }
+        public string Title { get; set; }
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace InterrogateMe.Web.Pages
             var resultTopic = _repository.SingleInclude(BaseSpecification<Topic>.ById(resultLink.TopicId), new List<ISpecification<Topic>> { TopicSpecification.IncludeQuestions() });
             Questions = resultTopic.Questions;
             Link = link;
+            Title = resultTopic.Title;
         }
     }
 }

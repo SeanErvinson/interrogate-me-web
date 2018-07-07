@@ -2,9 +2,21 @@
 @model InterrogateMe.Web.Pages.QuestionModel
 
 @section Header{
+    @*Open Graph*@
+    <meta property="og:title" content="@Model.Title">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.interrogate.me/@Model.ShortcutLink">
+    <meta property="og:site_name" content="Interrogate.me">
+    <meta property="og:image" content="/favicon.ico">
+    <meta property="og:description" content="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free.">
+    @*Twitter*@
+    <meta name="twitter:card" content="website">
+    <meta name="twitter:url" content="https://www.interrogate.me/@Model.ShortcutLink">
+    <meta name="twitter:title" content="@Model.Title">
+    <meta name="twitter:description" content="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free.">
+    <meta name="twitter:image" content="/favicon.ico">
     <google-ad-sense ad-client="ca-pub-3213478567330372"></google-ad-sense>
 }
-
 <div class="content">
     <div class="container bound">
         <div class="sub-container">

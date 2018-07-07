@@ -4,15 +4,11 @@
     @*Required Metadata*@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <partial name="_FaviconsPartial" />
-    <title>Interrogate Me - Create your Q and A for Free - Interrogate.Me</title>
-    @*Open Graph*@
-    <meta property="og:title" content="Interrogate.Me">
-    <meta property="og:type" content="Summary">
-    <meta property="og:url" content="https://www.interrogate.me/">
-    <meta property="og:image" content="/favicon.ico">
-    <meta property="og:description" content="Interrogate.me is the best place to ask a user a question. For free.">
     <meta name="description" content="Interrogate.me is the best place to ask a user a question. For free.">
+    <title>Interrogate Me - Create your Q and A for Free - Interrogate.Me</title>
+    <partial name="_FaviconsPartial" />
+
+    @RenderSection("Header", required: false)
 
     <google-analytics tracking-id="UA-121852812-1"></google-analytics>
 
@@ -25,15 +21,13 @@
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/jsSocials/jssocials.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/jsSocials/jssocials-theme-flat.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/jsSocials/jssocials.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/jsSocials/jssocials-theme-flat.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
     </environment>
     @*Fonts*@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet">
-
-    @RenderSection("Header", required: false)
 </head>
 
 <body>
