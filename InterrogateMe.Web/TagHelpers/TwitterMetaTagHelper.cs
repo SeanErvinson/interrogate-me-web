@@ -36,7 +36,7 @@ namespace InterrogateMe.Web.TagHelpers
             output.SuppressOutput();
             var sb = new StringBuilder();
 
-            sb.AppendLine($"<meta name=\"twitter: card\" content=\"{Card}\">");
+            sb.AppendLine($"<meta name=\"twitter:card\" content=\"{Card}\">");
             sb.AppendLine($"<meta name=\"twitter:site\" content=\"@{Site}\">");
             sb.AppendLine($"<meta name=\"twitter:creator\" content=\"@{Creator}\">");
             sb.AppendLine($"<meta name=\"twitter:title\" content=\"{Title}\">");
