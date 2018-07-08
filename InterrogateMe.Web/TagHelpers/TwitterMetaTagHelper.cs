@@ -5,11 +5,29 @@ namespace InterrogateMe.Web.TagHelpers
 {
     public class TwitterMetaTagHelper : TagHelper
     {
+        /// <summary>
+        /// Title of the topic
+        /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// Description of the topic
+        /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// Url for the image that is displayed on the card
+        /// </summary>
         public string ImageUrl { get; set; }
+        /// <summary>
+        /// Twitter handler of the site
+        /// </summary>
         public string Site { get; set; }
+        /// <summary>
+        /// Type of card
+        /// </summary>
         public string Card { get; set; }
+        /// <summary>
+        /// Twitter handler of the publisher
+        /// </summary>
         public string Creator { get; set; }
 
 

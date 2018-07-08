@@ -5,11 +5,29 @@ namespace InterrogateMe.Web.TagHelpers
 {
     public class FacebookMetaTagHelper : TagHelper
     {
+        /// <summary>
+        /// Title of the topic
+        /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// Description of the topic
+        /// </summary>
         public string Description { get; set; }
-        public string Url { get; set; }
-        public string Type { get; set; }
+        /// <summary>
+        /// Url for the image that is displayed on the card
+        /// </summary>
         public string ImageUrl { get; set; }
+        /// <summary>
+        /// Url of the topic
+        /// </summary>
+        public string Url { get; set; }
+        /// <summary>
+        /// Type of content
+        /// </summary>
+        public string Type { get; set; }
+        /// <summary>
+        /// Name of the site
+        /// </summary>
         public string SiteName { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
