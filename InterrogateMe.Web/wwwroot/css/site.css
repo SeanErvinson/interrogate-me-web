@@ -173,9 +173,15 @@ form{
 
 .navbar .logo {
     float: left;
-    padding-top: 8px;
+    padding-top: 10px;
     display: block;
+    vertical-align: middle;
+    font-size: .9em;
     border: 0;
+}
+
+.logo > img {
+    height: 1.2em;
 }
 
 .navbar ul {
