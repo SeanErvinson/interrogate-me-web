@@ -1,8 +1,9 @@
 ﻿@page
 @model IndexModel
+@using InterrogateMe.Core.Models;
 @{
     string tooltipNsfw = "Prevent profane or vulgar words as much as possible.";
-    string tooltipIpDuplication = "Check if Ip has already asked. Prevents spam.";
+    string tooltipSpamPrevention = "Check if Ip has already asked. Prevents spam.";
 }
 
 @section Header{
@@ -19,7 +20,7 @@
                   title="Interrogate.me"
                   site="InterrogateMe_"
                   image-url="https://www.interrogate.me/images/magnify_400x400.png"></twitter-meta>
-    <google-ad-sense ad-client="ca-pub-3213478567330372"></google-ad-sense>
+    @*<google-ad-sense ad-client="ca-pub-3213478567330372"></google-ad-sense>*@
 }
 
 <div class="content">
@@ -33,16 +34,6 @@
                 </div>
                 <div class="checkboxes subSection">
                     <div class="checkbox">
-                        <input id="ipDuplication" asp-for="@Model.Topic.PreventIpDuplication" type="checkbox" />
-                        <label asp-for="@Model.Topic.PreventIpDuplication" for="ipDuplication"></label>
-                        <div class="tooltiphold">
-                            <span class="tooltiphold image">
-                                <i class="fas fa-question"></i>
-                            </span>
-                            <span class="tooltiptext">@tooltipIpDuplication</span>
-                        </div>
-                    </div>
-                    <div class="checkbox">
                         <input id="nsfw" asp-for="@Model.Topic.PreventNSFW" type="checkbox" />
                         <label asp-for="@Model.Topic.PreventNSFW" for="nsfw"></label>
                         <div class="tooltiphold">
@@ -53,16 +44,17 @@
                         </div>
                     </div>
                     <div class="checkbox">
-                        <select>
-                            <option>
-                                IP Duplication Checking
-                            </option>
-                            <option>
-                                Browser Cookie Duplication Checking
-                            </option>
-                            <option>
-                                No Duplicaiton Checking
-                            </option>
+                        <input id="spamPrevention" asp-for="@Model.Topic.PreventSpam" type="checkbox" />
+                        <label asp-for="@Model.Topic.PreventSpam" for="spamPrevention"></label>
+                        <div class="tooltiphold">
+                            <span class="tooltiphold image">
+                                <i class="fas fa-question"></i>
+                            </span>
+                            <span class="tooltiptext">@tooltipSpamPrevention</span>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <select asp-for="@Model.Topic.DuplicationCheck" asp-items="Html.GetEnumSelectList<DuplicationCheck>()"> 
                         </select>
                     </div>
                 </div>
@@ -83,8 +75,7 @@
     </div>
 </div>
 
-@section Scripts
-    {
+@section Scripts{
     <script>
         $("#executeLink").on('click', function () {
             var shortcutLink = $("#shortcutLink").val();
