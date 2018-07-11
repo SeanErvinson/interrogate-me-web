@@ -1,5 +1,5 @@
 ﻿using InterrogateMe.Core.Data.Specification;
-using InterrogateMe.Core.Models;
+using InterrogateMe.Core.Models.Base;
 using System.Collections.Generic;
 
 namespace InterrogateMe.Core.Data

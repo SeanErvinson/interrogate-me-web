@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterrogateMe.Core.Models.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace InterrogateMe.Core.Models
