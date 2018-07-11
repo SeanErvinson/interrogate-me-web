@@ -30,6 +30,7 @@ namespace InterrogateMe.Web.Pages
 
         [TempData]
         public bool IsValidQuestion { get; set; } = true;
+
         public InterrogateClient InterrogateClient { get; }
         public string Title { get; set; }
         public string ShortcutLink { get; set; }
@@ -46,7 +47,7 @@ namespace InterrogateMe.Web.Pages
             _logger = logger;
             this.InterrogateClient = interrrogateClient;
         }
-       
+
         public void OnGet(string link)
         {
             var resultLink = _repository.Single(LinkSpecification.ByUrl(link));
@@ -65,13 +66,13 @@ namespace InterrogateMe.Web.Pages
 
             if (resultLink == null)
                 return NotFound();
-            
+
             var resultTopic = _repository.SingleInclude(BaseSpecification<Topic>.ById(resultLink.TopicId), new List<ISpecification<Topic>> { TopicSpecification.IncludeQuestions() });
 
             if (resultTopic == null)
                 return NotFound();
 
-            if(resultTopic.PreventIpDuplication)
+            if (resultTopic.DuplicationCheck == DuplicationCheck.IpAddress)
             {
                 if (IsDuplicateIp(WebHelper.GetRemoteIP))
                     return RedirectToPage();
@@ -79,15 +80,23 @@ namespace InterrogateMe.Web.Pages
                 AddIpAddress(resultTopic.Id);
             }
 
-            if(resultTopic.PreventNSFW)
+            if (resultTopic.DuplicationCheck == DuplicationCheck.BrowserCookie)
             {
-                if(!IsNsfw(Question.Content))
+                const string cookieKey = "PID";
+                if (CookieExists(cookieKey, TempLink))
+                    return RedirectToPage();
+                WebHelper.SetCookie(cookieKey, TempLink, null);
+            }
+
+            if (resultTopic.PreventNSFW)
+            {
+                if (!IsNsfw(Question.Content))
                 {
                     IsValidQuestion = false;
                     return RedirectToPage();
                 }
             }
-            
+
             resultTopic.Questions.Add(Question);
 
             _repository.Update(resultTopic);
@@ -105,6 +114,7 @@ namespace InterrogateMe.Web.Pages
             {
                 Address = WebHelper.GetRemoteIP,
                 UserAgent = WebHelper.GetUserAgent,
+                RequestScheme = WebHelper.GetScheme,
                 TopicId = id
             });
         }
@@ -119,6 +129,20 @@ namespace InterrogateMe.Web.Pages
                     return false;
             }
             return true;
+        }
+
+        private bool CookieExists(string key, string value)
+        {
+            var cookieValue = WebHelper.GetCookie(key);
+            if (cookieValue == null)
+                return false;
+            var cookies = cookieValue.Split("&");
+            foreach (var cookie in cookies)
+            {
+                if (cookie == value)
+                    return true;
+            }
+            return false;
         }
 
         private bool IsDuplicateIp(string ipAddress)
