@@ -3,15 +3,17 @@ using System;
 using InterrogateMe.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace InterrogateMe.Data.Migrations
 {
     [DbContext(typeof(InterrogateDbContext))]
-    partial class InterrogateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180711115153_Removed Identifier and BrowserCookie")]
+    partial class RemovedIdentifierandBrowserCookie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
