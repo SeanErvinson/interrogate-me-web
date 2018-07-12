@@ -51,7 +51,7 @@ namespace InterrogateMe.Web.Pages
                 Topic = Topic,
                 Url = generatedUrl
             });
-            return Redirect(generatedUrl);
+            return RedirectToPage("Question", new { link = generatedUrl });
         }
 
         #region Helper Method
