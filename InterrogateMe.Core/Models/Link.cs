@@ -14,6 +14,7 @@ namespace InterrogateMe.Core.Models
 
         public Topic Topic { get; set; }
 
+        [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     }
