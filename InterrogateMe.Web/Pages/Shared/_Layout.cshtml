@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Interrogate.me is the best place to ask a user a question. For free.">
     <title>Interrogate Me - Create your Q and A for Free - Interrogate.Me</title>
+    <link rel="alternate" hreflang="en" href="https://www.interrogate.me/">
     <partial name="_FaviconsPartial" />
     @RenderSection("Header", required: false)
 
-    <google-analytics tracking-id="UA-121852812-1"></google-analytics>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/site.css" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
     </environment>
     <environment exclude="Development">
+        <google-analytics tracking-id="UA-121852812-1"></google-analytics>
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/jsSocials/jssocials.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/jsSocials/jssocials-theme-flat.min.css" asp-append-version="true" />
@@ -66,6 +67,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/js/jsSocials/jssocials.js"></script>
+        <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     </environment>
