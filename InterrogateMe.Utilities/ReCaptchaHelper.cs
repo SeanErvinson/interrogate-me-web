@@ -12,6 +12,10 @@ namespace InterrogateMe.Utilities
         private const string ApiVerificationEndpoint = "https://www.google.com/recaptcha/api/siteverify";
         private static string secret;
 
+        /// <summary>
+        /// Candidate for refactor to depend less on other project's model
+        /// </summary>
+        /// <param name="configuration"></param>
         public static void Configure(IConfiguration configuration)
         {
             _configuration = configuration;
