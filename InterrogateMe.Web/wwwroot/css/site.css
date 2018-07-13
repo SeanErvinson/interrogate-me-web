@@ -1,5 +1,5 @@
 /* Base */
-html, body, h3, h1 {
+html, body, h3, h1, h2 {
     height: 100%;
     margin: 0
 }
@@ -31,40 +31,10 @@ button {
     cursor: pointer;
 }
 
-form{
-    padding: 20px 0px;
-}
-
 /* tooltip */
 
 .tooltiphold {
-    position: relative;
     display: inline-block;
-}
-
-.tooltiptext {
-    margin: 10px;
-    padding: 10px;
-    font-size: .55em;
-}
-
-.tooltiphold .tooltiptext {
-    visibility: hidden;
-    width: 200px;
-    background-color: #ffffff;
-    color: black;
-    text-align: center;
-    padding: 20px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 115%;
-    left: 50%;
-    margin-left: -100px;
-}
-
-.tooltiphold:hover .tooltiptext {
-    visibility: visible;
-    box-shadow: 0px 3px 30px #a5a5a5;
 }
 
 /* TL */
@@ -75,12 +45,20 @@ form{
 }
 
 .container {
-    max-width: 70%;
+    max-width: 55%;
     margin: 0 auto;
 }
 
+.mini-container {
+    margin: 25px 5vw;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+
 .bound {
-    padding: 10px 12vw;
+    padding: 10px 5vw;
 }
 
 .header {
@@ -91,7 +69,7 @@ form{
 
 .content {
     flex: 1 1 auto;
-    background-color: #fbfbfb;
+    background-color: #fcfcfc;
 }
 
 .footer {
@@ -104,7 +82,7 @@ form{
 .sub-container {
     margin: 25px;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-    padding: 30px;
+    padding: 20px;
     background-color: #ffffff;
 }
 
@@ -114,18 +92,19 @@ form{
 
 /*General*/
 .heroHeader {
-    font-size: .95em;
+    font-size: 1.2em;
     font-weight: 300;
     padding: 15px 0px;
 }
+
 .mainHeader {
     font-size: .90em;
     font-weight: 700;
-    padding: 15px 0px;
+    padding: 10px 0px;
 }
 
 .subHeader {
-    font-size: .9em;
+    font-size: .8em;
 }
 .subSection{
     padding: 15px;
@@ -155,6 +134,12 @@ form{
 .validation {
     color: #D0021B;
     font-size: .6em;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.center{
+    text-align: center;
 }
 
 .field-validation-error {
@@ -241,11 +226,13 @@ form{
 }
 
 .checkboxes {
-    padding: 10px 6.5vw;
+    padding: 10px 5.5vw;
 }
 
 .checkbox {
     text-align: left;
+    padding-bottom: 10px;
+    font-family: Raleway, sans-serif;
 }
 
 .checkbox label {
@@ -255,9 +242,21 @@ form{
     font-size: .67em;
 }
 
+.icon{
+    font-size: .7em;
+}
+
+.info{
+    font-size: .60em;
+}
+
+.dropdownbox {
+    padding: 15px 5px;
+    font-size: .6em;
+}
 
 .mainButton {
-    font-size: .85em;
+    font-size: .80em;
     padding: 7px 50px;
     border: 0px;
     background-color: #ca302c !important;
@@ -335,8 +334,21 @@ form{
     width: 18em;
 }
 
-.mainInput.extended{
-    width: 20em;
+.questionBox {
+    width: 25vw;
+    font-size: .65em;
+    padding: 10px;
+    resize: none;
+    background-color: #f2f2f2;
+    font-family: Raleway, sans-serif;
+}
+
+.text-xs-center {
+    text-align: center;
+}
+
+.g-recaptcha {
+    display: inline-block;
 }
 
 .choice{
@@ -345,6 +357,7 @@ form{
 
 .result {
     color: #888888;
+    font-size: .8em;
 }
 
 .qrCode{
@@ -460,6 +473,19 @@ form{
 
 /* Media */
 
+@media only screen and (max-width: 1360px) {
+    .container {
+        max-width: 70%;
+    }
+
+    .bound {
+        padding: 10px 5vw;
+    }
+    .checkboxes {
+        padding: 10px 4vw;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     body {
         font-size: 18pt;
@@ -467,12 +493,17 @@ form{
 
     .sub-container {
         margin: 15px;
-        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-        padding: 20px;
     }
 
+    .mini-container {
+        margin: 25px 3vw;
+    }
+
+    .checkboxes {
+        padding: 10px 3.8vw;
+    }
     .bound {
-        padding: 10px 6.3vw;
+        padding: 10px 4vw;
     }
 
     .container {
@@ -494,16 +525,15 @@ form{
 
     .sub-container {
         margin: 10px;
-        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
         padding: 15px;
     }
 
     .bound {
-        padding: 10px 2.9vw;
+        padding: 10px 3vw;
     }
 
     .container {
-        max-width: 90%;
+        max-width: 85%;
     }
 
     .navbar {
@@ -514,5 +544,24 @@ form{
     }
     .subInput.readonly {
         width: 19em;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .checkboxes {
+        padding: 10px;
+    }
+
+    .questionBox {
+        width: 55vw;
+    }
+
+    .sub-container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 100%;
     }
 }
