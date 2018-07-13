@@ -1,8 +1,9 @@
 ﻿@page "{link}"
 @model InterrogateMe.Web.Pages.QuestionModel
+@inject Microsoft.Extensions.Configuration.IConfiguration configuration
 
 @section Header{
-    <facebook-meta description="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free."
+    <facebook-meta description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. For free."
                    url="https://www.interrogate.me/@Model.ShortcutLink"
                    image-url="https://www.interrogate.me/images/magnify_400x400.png"
                    title="@Model.Title"
@@ -10,7 +11,7 @@
                    site-name="Interrogate.me"></facebook-meta>
     <twitter-meta card="summary"
                   creator="InterrogateMe_"
-                  description="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free."
+                  description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. For free."
                   title="@Model.Title"
                   site="InterrogateMe_"
                   image-url="https://www.interrogate.me/images/magnify_400x400.png"></twitter-meta>
@@ -23,19 +24,21 @@
                 @Model.Title
             </h2>
             <form method="post">
-                <input type="hidden" asp-for="@Model.TempLink" value="@Model.ShortcutLink" />
+                <input type="hidden" asp-for="@Model.Title" />
+                <input type="hidden" asp-for="@Model.ShortcutLink" />
+                <input type="hidden" asp-for="@Model.ShowReCaptcha" />
                 <div class="subSection">
-                    <input id="question" class="mainInput extended" asp-for="@Model.Question.Content" placeholder="Enter your question..." type="text" />
-                    @if (!Model.IsValidQuestion)
-                    {
-                        <div>
-                            <span class="validation">Question contains word/s that are considered as NSFW</span>
-                        </div>
-                    }
+                    <div class="subHeader">Enter your question:</div>
+                    <textarea class="questionBox" asp-for="@Model.Question.Content" cols="47" rows="7"></textarea>
                     <div>
                         <span asp-validation-for="@Model.Question.Content"></span>
                     </div>
+                    @if (Model.ShowReCaptcha)
+                    {
+                        <div class="g-recaptcha" data-sitekey="@configuration["GoogleReCaptcha:key"]"></div>
+                    }
                 </div>
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
                 <div class="subSection">
                     <button class="mainButton choice">Ask</button>
                     <a class="result choice" asp-page="Result">Results</a>
@@ -44,7 +47,7 @@
         </div>
         <div class="sub-container">
             <div class="subSection">
-                <h1 class="subHeader">Share this link:</h1>
+                <h2 class="subHeader">Share this link:</h2>
                 <input class="subInput readonly" id="shortcutUrl" readonly value="https://interrogate.me/@Model.ShortcutLink" />
                 <div id="qrcode" class="qrCode"></div>
             </div>
@@ -58,6 +61,10 @@
 
 
 @section Scripts{
+    @if(Model.ShowReCaptcha)
+    {
+        <script src='https://www.google.com/recaptcha/api.js'></script>        
+    }
     <script src="~/js/jsSocials/jssocials.min.js"></script>
     <script src="~/js/qrcode/qrcode.min.js"></script>
     <script>

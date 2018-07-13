@@ -1,4 +1,4 @@
-﻿using InterrogateMe.Core.Models;
+﻿using InterrogateMe.Core.Models.Base;
 using System;
 using System.Linq.Expressions;
 

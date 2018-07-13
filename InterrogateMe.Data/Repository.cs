@@ -1,6 +1,6 @@
 ﻿using InterrogateMe.Core.Data;
 using InterrogateMe.Core.Data.Specification;
-using InterrogateMe.Core.Models;
+using InterrogateMe.Core.Models.Base;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace InterrogateMe.Web.Pages
 {
@@ -43,32 +42,39 @@ namespace InterrogateMe.Web.Pages
             if (!ModelState.IsValid)
                 return Page();
 
-            try
-            {
-                generatedUrl = GenerateValidUrl();
-            }
-            catch (ArgumentException ex)
-            {
-                _logger.LogError($"There was a problem generating", ex);
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
+            generatedUrl = GenerateValidUrl();
+            if(generatedUrl == null)
+                return StatusCode((int)HttpStatusCode.InternalServerError);
 
             _repository.Add(new Link
             {
                 Topic = Topic,
                 Url = generatedUrl
             });
-            return Redirect(generatedUrl);
+            return RedirectToPage("Question", new { link = generatedUrl });
         }
 
         #region Helper Method
 
         private string GenerateValidUrl()
         {
-            var generatedUrl = UrlHelper.GenerateUrl();
-            if (IsValidUrl(generatedUrl))
-                return generatedUrl;
-            throw new ArgumentException("Could not produce a valid url");
+            var generatedUrl = string.Empty;
+
+            try
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    generatedUrl = UrlHelper.GenerateUrl();
+                    if (IsValidUrl(generatedUrl))
+                        return generatedUrl;
+                }
+                throw new ArgumentException($"{generatedUrl} could not be generated");
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogError($"An error occured while generating a url {generatedUrl}", ex);
+            }
+            return generatedUrl;
         }
 
         private bool IsValidUrl(string generatedUrl)

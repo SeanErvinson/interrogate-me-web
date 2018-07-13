@@ -2,7 +2,7 @@
 @model InterrogateMe.Web.Pages.ResultModel
 
 @section Header{
-    <facebook-meta description="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free."
+    <facebook-meta description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. For free."
                    url="https://www.interrogate.me/@Model.Link"
                    image-url="https://www.interrogate.me/images/magnify_400x400.png"
                    title="@Model.Title"
@@ -10,7 +10,7 @@
                    site-name="Interrogate.me"></facebook-meta>
     <twitter-meta card="summary"
                   creator="InterrogateMe_"
-                  description="Ask Now! @Model.Title - Interrogate.me is the best place to ask a user a question. For free."
+                  description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. For free."
                   title="@Model.Title"
                   site="InterrogateMe_"
                   image-url="https://www.interrogate.me/images/magnify_400x400.png"></twitter-meta>
@@ -27,7 +27,7 @@
                     <button id="stateText">Minimize All</button>
                 </div>
                 <div>
-                    Number of participant: <span id="participantCount">@Model.Questions.Count()</span>
+                    Number of questions: <span id="participantCount">@Model.Questions.Count()</span>
                 </div>
             </div>
             <ul id="questionList">
@@ -62,7 +62,7 @@
 
             var hub = new InterrogateHub();
 
-            hub.onParticipantCount = (count) => {
+            hub.onQuestionCount = (count) => {
                 console.log(count);
                 $("#participantCount").html(count);
             }

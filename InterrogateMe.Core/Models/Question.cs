@@ -1,15 +1,17 @@
-﻿using System;
+﻿using InterrogateMe.Core.Models.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace InterrogateMe.Core.Models
 {
     public class Question : BaseModel
     {
-        [Required]
         [DataType(DataType.MultilineText)]
-        [StringLength(int.MaxValue, MinimumLength = 2, ErrorMessage ="Must have a minimum length of 2")]
+        [Required(ErrorMessage = "Please enter a question.")]
+        [StringLength(int.MaxValue, MinimumLength = 2, ErrorMessage ="Question must be longer than two character")]
         public string Content { get; set; }
 
+        [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateAsked { get; set; } = DateTime.UtcNow;
 

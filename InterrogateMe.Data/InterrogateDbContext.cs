@@ -9,11 +9,11 @@ namespace InterrogateMe.Data
         {
 
         }
-
+        
+        public DbSet<IpAddress> IpAddresses { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Link> Links { get; set; }
-        public DbSet<IpAddress> IpAddresses { get; set; }
         public DbSet<ProfaneWord> ProfaneWords { get; set; }
     }
 }

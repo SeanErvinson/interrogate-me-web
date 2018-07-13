@@ -3,7 +3,7 @@
         this._hub = null;
         this.debug = false;
         this.onNotifyList = null;
-        this.onParticipantCount = null;
+        this.onQuestionCount = null;
     }
 
     start(groupName) {
@@ -28,9 +28,9 @@
             if (this.onNotifyList) this.onNotifyList(Question);
         });
 
-        this._hub.on("OnUpdateParticipantCount", count => {
+        this._hub.on("OnUpdateQuestionCount", count => {
             if (this.debug) console.log("Notify");
-            if (this.onParticipantCount) this.onParticipantCount(count);
+            if (this.onQuestionCount) this.onQuestionCount(count);
         });
 
 

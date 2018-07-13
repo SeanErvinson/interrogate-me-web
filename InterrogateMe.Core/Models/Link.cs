@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterrogateMe.Core.Models.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace InterrogateMe.Core.Models
@@ -13,6 +14,7 @@ namespace InterrogateMe.Core.Models
 
         public Topic Topic { get; set; }
 
+        [Required]
         [DataType(DataType.DateTime)]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     }

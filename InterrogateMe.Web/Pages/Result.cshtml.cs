@@ -1,6 +1,7 @@
 ﻿using InterrogateMe.Core.Data;
 using InterrogateMe.Core.Data.Specification;
 using InterrogateMe.Core.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -30,13 +31,24 @@ namespace InterrogateMe.Web.Pages
             _logeger = logger;
         }
 
-        public void OnGet(string link)
+        public IActionResult OnGet(string link)
         {
+            if (link == null)
+                return NotFound();
+
             var resultLink = _repository.Single(LinkSpecification.ByUrl(link));
+            if (resultLink == null)
+                return NotFound();
+
             var resultTopic = _repository.SingleInclude(BaseSpecification<Topic>.ById(resultLink.TopicId), new List<ISpecification<Topic>> { TopicSpecification.IncludeQuestions() });
+            if (resultTopic == null)
+                return NotFound();
+
             Questions = resultTopic.Questions;
             Link = link;
             Title = resultTopic.Title;
+
+            return Page();
         }
     }
 }

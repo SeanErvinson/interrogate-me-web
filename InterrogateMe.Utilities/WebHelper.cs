@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System;
 
 namespace InterrogateMe.Utilities
 {
@@ -29,6 +30,29 @@ namespace InterrogateMe.Utilities
         public static string GetScheme
         {
             get { return HttpContext.Request.Scheme; }
+        }
+
+        public static void SetCookie(string key, string value, int? expirationTime)
+        {
+            var cookieOptions = new CookieOptions();
+            var cookieValue = GetCookie(key);
+            if (cookieValue != null)
+                cookieValue += $"&{value}";
+            else
+                cookieValue = value;
+            if (expirationTime.HasValue)
+                cookieOptions.Expires = DateTime.Now.AddMinutes(expirationTime.Value);
+            HttpContext.Response.Cookies.Append(key, cookieValue, cookieOptions);
+        }
+
+        public static void RemoveCookie(string key)
+        {
+            HttpContext.Response.Cookies.Delete(key);
+        }
+
+        public static string GetCookie(string key)
+        {
+            return HttpContext.Request.Cookies[key];
         }
     }
 }

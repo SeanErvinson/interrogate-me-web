@@ -14,9 +14,9 @@ namespace InterrogateMe.Core.Data.Specification
         {
         }
 
-        public static IpAddressSpecification ByIpAddress(string ipAddress)
+        public static IpAddressSpecification ByIpAddressAndTopicId(string ipAddress, Guid topicId)
         {
-            return new IpAddressSpecification(x => x.Address == ipAddress);
+            return new IpAddressSpecification(x => x.Address == ipAddress && x.TopicId == topicId);
         }
     }
 }

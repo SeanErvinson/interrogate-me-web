@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterrogateMe.Core.Models.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace InterrogateMe.Core.Models
@@ -7,6 +8,8 @@ namespace InterrogateMe.Core.Models
     {
         [Required]
         public string Address { get; set; }
+
+        public string RequestScheme { get; set; }
 
         public string UserAgent { get; set; }
 

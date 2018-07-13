@@ -41,7 +41,7 @@ namespace InterrogateMe.Web
             services.AddScoped<IRepository, Repository>();
 
             services.AddSingleton<InterrogateClient>();
-            
+                        
             services.AddSignalR();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
@@ -92,6 +92,7 @@ namespace InterrogateMe.Web
             app.UseMvc();
 
             WebHelper.Configure(app.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
+            ReCaptchaHelper.Configure(app.ApplicationServices.GetRequiredService<IConfiguration>());
         }
     }
 }

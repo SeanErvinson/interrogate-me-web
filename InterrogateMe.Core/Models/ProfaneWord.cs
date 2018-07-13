@@ -1,4 +1,6 @@
-﻿namespace InterrogateMe.Core.Models
+﻿using InterrogateMe.Core.Models.Base;
+
+namespace InterrogateMe.Core.Models
 {
     public class ProfaneWord : BaseModel
     {

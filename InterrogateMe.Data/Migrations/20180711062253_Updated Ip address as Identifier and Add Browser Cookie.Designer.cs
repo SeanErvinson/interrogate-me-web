@@ -3,15 +3,17 @@ using System;
 using InterrogateMe.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace InterrogateMe.Data.Migrations
 {
     [DbContext(typeof(InterrogateDbContext))]
-    partial class InterrogateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180711062253_Updated Ip address as Identifier and Add Browser Cookie")]
+    partial class UpdatedIpaddressasIdentifierandAddBrowserCookie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,12 +21,12 @@ namespace InterrogateMe.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("InterrogateMe.Core.Models.IpAddress", b =>
+            modelBuilder.Entity("InterrogateMe.Core.Models.Base.BaseIdentifier", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address")
+                    b.Property<string>("Discriminator")
                         .IsRequired();
 
                     b.Property<string>("RequestScheme");
@@ -37,7 +39,9 @@ namespace InterrogateMe.Data.Migrations
 
                     b.HasIndex("TopicId");
 
-                    b.ToTable("IpAddresses");
+                    b.ToTable("Identifiers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("BaseIdentifier");
                 });
 
             modelBuilder.Entity("InterrogateMe.Core.Models.Link", b =>
@@ -115,7 +119,31 @@ namespace InterrogateMe.Data.Migrations
                     b.ToTable("Topics");
                 });
 
+            modelBuilder.Entity("InterrogateMe.Core.Models.BrowserCookie", b =>
+                {
+                    b.HasBaseType("InterrogateMe.Core.Models.Base.BaseIdentifier");
+
+                    b.Property<string>("Cookie")
+                        .IsRequired();
+
+                    b.ToTable("BrowserCookie");
+
+                    b.HasDiscriminator().HasValue("BrowserCookie");
+                });
+
             modelBuilder.Entity("InterrogateMe.Core.Models.IpAddress", b =>
+                {
+                    b.HasBaseType("InterrogateMe.Core.Models.Base.BaseIdentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired();
+
+                    b.ToTable("IpAddress");
+
+                    b.HasDiscriminator().HasValue("IpAddress");
+                });
+
+            modelBuilder.Entity("InterrogateMe.Core.Models.Base.BaseIdentifier", b =>
                 {
                     b.HasOne("InterrogateMe.Core.Models.Topic", "Topic")
                         .WithMany()
