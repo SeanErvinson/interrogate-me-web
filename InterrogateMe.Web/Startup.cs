@@ -42,7 +42,10 @@ namespace InterrogateMe.Web
 
             services.AddSingleton<InterrogateClient>();
                         
-            services.AddSignalR();
+            services.AddSignalR(hubOptions => 
+            {
+                hubOptions.KeepAliveInterval = TimeSpan.FromSeconds(5);
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddRazorPagesOptions(options =>
@@ -72,6 +75,12 @@ namespace InterrogateMe.Web
             app.UseAuthentication();
 
             app.UseHttpsRedirection();
+
+            app.UseSignalR(route =>
+            {
+                route.MapHub<InterrogateHub>("/interrogate");
+            });
+
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = ctx =>
@@ -85,10 +94,7 @@ namespace InterrogateMe.Web
                 }
             });
             app.UseCookiePolicy();
-            app.UseSignalR(route =>
-            {
-                route.MapHub<InterrogateHub>("/interrogate");
-            });
+
             app.UseMvc();
 
             WebHelper.Configure(app.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
