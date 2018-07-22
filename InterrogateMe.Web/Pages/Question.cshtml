@@ -3,7 +3,8 @@
 @inject Microsoft.Extensions.Configuration.IConfiguration configuration
 
 @section Header{
-    <facebook-meta description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. For free."
+    <link rel="canonical" href="https://interrogate.me/@Model.ShortcutLink">
+    <facebook-meta description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. Enter title of the poll, share the link, and view incoming question in real-time on Interrogate.me for free."
                    url="https://www.interrogate.me/@Model.ShortcutLink"
                    image-url="https://www.interrogate.me/images/magnify_400x400.png"
                    title="@Model.Title"
@@ -11,11 +12,14 @@
                    site-name="Interrogate.me"></facebook-meta>
     <twitter-meta card="summary"
                   creator="InterrogateMe_"
-                  description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. For free."
+                  description="Ask Now! @Model.Title - Interrogate.me is the best place to create a question and answer poll. Enter title of the poll, share the link, and view incoming question in real-time on Interrogate.me for free."
                   title="@Model.Title"
                   site="InterrogateMe_"
                   image-url="https://www.interrogate.me/images/magnify_400x400.png"></twitter-meta>
     <google-ad-sense ad-client="ca-pub-3213478567330372"></google-ad-sense>
+
+    <link rel="stylesheet" href="~/css/jsSocials/jssocials.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/jsSocials/jssocials-theme-flat.min.css" asp-append-version="true" />
 }
 <div class="content">
     <div class="container bound">
@@ -61,11 +65,11 @@
 
 
 @section Scripts{
-    @if(Model.ShowReCaptcha)
+    @if (Model.ShowReCaptcha)
     {
-        <script src='https://www.google.com/recaptcha/api.js'></script>        
+        <script src='https://www.google.com/recaptcha/api.js'></script>
     }
-    <script src="~/js/jsSocials/jssocials.min.js"></script>
+    <script src="~/js/jsSocials/jssocials.min.js" asp-append-version="true"></script>
     <script src="~/js/qrcode/qrcode.min.js"></script>
     <script>
         $("#shortcutUrl").on("click", function () {

@@ -4,27 +4,22 @@
     @*Required Metadata*@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interrogate Me - Create your Q and A poll for Free</title>
-    <meta name="description" content="Interrogate.me is the best place to create a question and answer poll. For free.">
-    <link rel="alternate" hreflang="en" href="https://www.interrogate.me/">
+    <title>Interrogate Me - Create your Q and A poll for free.</title>
+    <meta name="keywords" content="Q and A poll">
+    <meta name="description" content="Interrogate.me is the best place to create a question and answer poll. Enter title of the poll, share the link, and view incoming question in real-time on Interrogate.me for free.">
+    <link rel="alternate" href="https://interrogate.me/" hreflang="en-us" />
     <partial name="_FaviconsPartial" />
+    <google-plus-meta name="Interrogate.me"
+                      description="Interrogate.me is the best place to create a question and answer poll. Enter title of the poll, share the link, and view incoming question in real-time on Interrogate.me for free."
+                      image-url="https://www.interrogate.me/images/magnify_400x400.png"></google-plus-meta>
     @RenderSection("Header", required: false)
-
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/css/jsSocials/jssocials.css" />
-        <link rel="stylesheet" href="~/css/jsSocials/jssocials-theme-flat.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
     </environment>
     <environment exclude="Development">
         <google-analytics tracking-id="UA-121852812-1"></google-analytics>
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/jsSocials/jssocials.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/jsSocials/jssocials-theme-flat.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
     </environment>
     @*Fonts*@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet">
@@ -35,7 +30,7 @@
         <div class="header">
             <div class="navbar">
                 <a href="/" class="logo">
-                    <img src="~/images/magnify_400x400.png" />
+                    <img src="~/images/magnify_400x400.png"  alt="interrogate.me logo"/>
                     Interrogate.me
                 </a>
                 <ul>
@@ -55,8 +50,8 @@
             </div>
             <div>
                 <p>
-                    <a href="/">Create</a>  |
-                    <a href="/privacy">Privacy Policy</a> |
+                    <a href="/">Create poll</a>  |
+                    <a href="/privacy">Privacy Policy and Cookies</a> |
                     <a href="/tos">Terms of Service</a>
                 </p>
             </div>
@@ -66,7 +61,6 @@
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/js/jsSocials/jssocials.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     </environment>
@@ -79,9 +73,7 @@
         </script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
-        <script src="~/js/jsSocials/jssocials.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>

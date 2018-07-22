@@ -4,7 +4,7 @@
 
 @section Header{
     <link rel="canonical" href="https://interrogate.me/">
-    <facebook-meta description="Interrogate.me is the best place to create a question and answer poll. For free."
+    <facebook-meta description="Interrogate.me is the best place to create a question and answer poll. Enter title of the poll, share the link, and view incoming question in real-time on Interrogate.me for free."
                    url="https://www.interrogate.me/"
                    image-url="https://www.interrogate.me/images/magnify_400x400.png"
                    title="Interrogate.me"
@@ -12,11 +12,12 @@
                    site-name="Interrogate.me"></facebook-meta>
     <twitter-meta card="summary"
                   creator="InterrogateMe_"
-                  description="Interrogate.me is the best place to create a question and answer poll. For free."
+                  description="Interrogate.me is the best place to create a question and answer poll. Enter title of the poll, share the link, and view incoming question in real-time on Interrogate.me for free."
                   title="Interrogate.me"
                   site="InterrogateMe_"
                   image-url="https://www.interrogate.me/images/magnify_400x400.png"></twitter-meta>
-    @*<google-ad-sense ad-client="ca-pub-3213478567330372"></google-ad-sense>*@
+
+    <google-ad-sense ad-client="ca-pub-3213478567330372"></google-ad-sense>
     <link rel="stylesheet" href="~/lib/jquery-modal/jquery.modal.min.css" />
 }
 
@@ -34,14 +35,17 @@
                         <input id="nsfw" asp-for="@Model.Topic.PreventNSFW" type="checkbox" />
                         <label asp-for="@Model.Topic.PreventNSFW" for="nsfw"></label>
                         <div class="tooltiphold">
-                            <a href="#nsfwInfo" class="icon" rel="modal:open">
-                                <i class="fas fa-question-circle"></i>
+                            <a href="#nsfwInfo" rel="modal:open">
+                                <img class="icon" src="~/images/question.svg" alt="question" />
                             </a>
                             <div id="nsfwInfo" class="modal info">
+                                <h3>NSFW Prevention</h3>
                                 <p>
-                                    This option filters out profane or vulgar words as much as possible.
+                                    This option tries to filters out the most commonly used profane or vulgar words that maybe be present on the question as much as possible.
                                     <br />
-                                    <strong>*Highly recommended for public events*</strong>
+                                    <em class="red">Local jargons or local slangs may not be included in the database.</em>
+                                    <br />
+                                    <strong><em class="red">*Highly recommended for public events*</em></strong>
                                 </p>
                             </div>
                         </div>
@@ -50,32 +54,34 @@
                         <input id="spamPrevention" asp-for="@Model.Topic.PreventSpam" type="checkbox" />
                         <label asp-for="@Model.Topic.PreventSpam" for="spamPrevention"></label>
                         <div class="tooltiphold">
-                            <a href="#spamInfo" class="icon" rel="modal:open">
-                                <i class="fas fa-question-circle"></i>
+                            <a href="#spamInfo" rel="modal:open">
+                                <img class="icon" src="~/images/question.svg" alt="question" />
                             </a>
                             <div id="spamInfo" class="modal info">
-                                <p>Users are required to solve a Captcha to verify that they are humans. This is to prevent bots from spamming</p>
+                                <h3>Spam Prevention</h3>
+                                <p>This option requires users to solve a ReCaptcha puzzle in order to verify that they are humans. This help prevent bots from spamming and other sort of question spamming.</p>
                             </div>
                         </div>
                     </div>
                     <div class="checkbox">
                         <select class="dropdownbox" asp-for="@Model.Topic.DuplicationCheck" asp-items="Html.GetEnumSelectList<DuplicationCheck>()"></select>
                         <div class="tooltiphold">
-                            <a href="#blockInfo" class="icon" rel="modal:open">
-                                <i class="fas fa-question-circle"></i>
+                            <a href="#blockInfo" rel="modal:open">
+                                <img class="icon" src="~/images/question.svg" alt="question" />
                             </a>
                             <div id="blockInfo" class="modal info">
+                                <h3>Duplication Checking</h3>
                                 <ul>
                                     <li>
                                         <p>
-                                            <strong>No Duplication Checking</strong> - Anyone and everyone can ask multiple times.
+                                            <strong>No Duplication Checking</strong> - This option allows anyone and everyone to ask multiple times without checking for any user duplication.
                                         </p>
                                     </li>
                                 </ul>
                                 <ul>
                                     <li>
                                         <p>
-                                            <strong>Ip Duplication Checking</strong> - Block users that have already asked a question base on their Ip address.
+                                            <strong>Ip Duplication Checking</strong> - This option block users that have already asked a question base on their IP address. Use with caution.
                                             <br />
                                             <em class="red">*Do not use on shared/public network as it will block everyone, once one user has asked a question. Use Browser Cookie Check instead.*</em>
                                         </p>
@@ -84,7 +90,7 @@
                                 <ul>
                                     <li>
                                         <p>
-                                            <strong>Browser Cookie Checking</strong> - Block users that have already asked a question base on the generated cookie. This allow other users on the same network to still be able to ask a question
+                                            <strong>Browser Cookie Checking</strong> - This option block users that have already asked a question base on the given generated cookie. This allow other users on the same network to still be able to ask a question.
                                         </p>
                                     </li>
                                 </ul>
@@ -95,9 +101,12 @@
                 <button class="mainButton">Create</button>
             </form>
         </div>
+        <div class="mini-container">
+
+        </div>
         <div class="sub-container">
             <div>
-                <h1 class="subHeader">Search a poll</h1>
+                <h2 class="subHeader">Search a poll</h2>
             </div>
             <div class="subSection" id="shortcut">
                 <input id="shortcutLink" class="subInput center extended" type="text" placeholder="Enter link..." />
