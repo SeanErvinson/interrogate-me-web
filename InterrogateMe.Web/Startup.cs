@@ -59,6 +59,8 @@ namespace InterrogateMe.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            InitializeDatabase(app);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -99,6 +101,15 @@ namespace InterrogateMe.Web
 
             WebHelper.Configure(app.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
             ReCaptchaHelper.Configure(app.ApplicationServices.GetRequiredService<IConfiguration>());
+        }
+
+        private static void InitializeDatabase(IApplicationBuilder builder)
+        {
+            using (var serviceScope = builder.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var interrogateDbContext = serviceScope.ServiceProvider.GetRequiredService<InterrogateDbContext>();
+                interrogateDbContext.Database.Migrate();
+            }
         }
     }
 }

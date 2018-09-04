@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterrogateMe.Core", "Inter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterrogateMe.Data", "InterrogateMe.Data\InterrogateMe.Data.csproj", "{20E8D091-1378-46EC-B7F7-596C69B857A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterrogateMe.Utilities", "InterrogateMe.Utilities\InterrogateMe.Utilities.csproj", "{065B0539-B623-4AB5-AFD5-B0983E2CBF19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterrogateMe.Utilities", "InterrogateMe.Utilities\InterrogateMe.Utilities.csproj", "{065B0539-B623-4AB5-AFD5-B0983E2CBF19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
