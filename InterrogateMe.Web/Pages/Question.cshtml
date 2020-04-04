@@ -52,7 +52,8 @@
         <div class="sub-container">
             <div class="subSection">
                 <h2 class="subHeader">Share this link:</h2>
-                <input class="subInput readonly" id="shortcutUrl" readonly value="https://interrogate.me/@Model.ShortcutLink" />
+                <input class="subInput readonly" id="shortcutUrl" readonly value=
+                @HttpContext.Request.Scheme://@HttpContext.Request.Host@HttpContext.Request.Path/>
                 <div id="qrcode" class="qrCode"></div>
             </div>
             <div>

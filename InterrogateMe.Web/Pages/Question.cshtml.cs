@@ -103,7 +103,7 @@ namespace InterrogateMe.Web.Pages
 
             if (resultTopic.PreventSpam)
             {
-                if(!ReCaptchaHelper.ValidateRecaptcha(Request.Form["g-recaptcha-response"]))
+                if (!ReCaptchaHelper.ValidateRecaptcha(Request.Form["g-recaptcha-response"]))
                     ModelState.AddModelError("Question.Content", "Invalid ReCaptcha");
             }
 
@@ -128,7 +128,7 @@ namespace InterrogateMe.Web.Pages
                             ModelState.AddModelError("Question.Content", "You have already asked a question on this poll");
                             break;
                         }
-                        else if(ModelState.IsValid)
+                        else if (ModelState.IsValid)
                             WebHelper.SetCookie(cookieKey, ShortcutLink, null);
                         break;
                     }
@@ -149,7 +149,7 @@ namespace InterrogateMe.Web.Pages
 
             InterrogateClient.UpdateQuestionCount(ShortcutLink, resultTopic.Questions.Count);
 
-            return RedirectToPage("Result");
+            return RedirectToPage("Result", new { link = ShortcutLink });
         }
 
         private static bool CookieExists(string key, string value)
